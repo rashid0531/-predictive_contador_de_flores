@@ -12,9 +12,16 @@ http://www.machinelearninguru.com/deep_learning/tensorflow/basics/tfrecord/tfrec
 
 import numpy as np
 import tensorflow as tf
+import matplotlib.pyplot as plt
 
 #This function reads single image file and converts it into a
 
 def read_image(image):
     img = tf.image.decode_jpeg(image,channels=3)
-    img_resized = tf.image.resize_images(image,[299,299])
+    img_resized = tf.image.resize_images(img,[299,299])
+    sess = tf.Session()
+    im = sess.run(img_resized)
+    plt.imread(im)
+    plt.show()
+
+read_image('test.jpg')
