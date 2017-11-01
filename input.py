@@ -18,7 +18,7 @@ import matplotlib as mil
 
 #This function reads single image file and converts it into a
 
-def read_image(image):
+def test_read_image(image):
     sess = tf.InteractiveSession()
     fn = image
     image_contents = tf.read_file(fn)
@@ -29,4 +29,4 @@ def read_image(image):
     plt.show()
     sess.close()
 
-read_image('flower.jpg')
+test_read_image('flower.jpg')
