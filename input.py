@@ -16,6 +16,7 @@ import matplotlib.pyplot as plt
 import matplotlib as mil
 from random import shuffle
 import glob
+import create_TFRecord
 
 #This function reads single image file and converts it into a
 
@@ -32,6 +33,14 @@ def test_read_image(image):
     sess.close()
 
 # test_read_image('flower.jpg')
+
+def read_image(image):
+
+    fn = image
+    image_contents = tf.read_file(fn)
+    im = tf.image.decode_image(image_contents, channels=3)
+    im = tf.image.resize_image_with_crop_or_pad(im, 500, 500)
+    return im
 
 def get_bin(value):
 
@@ -81,6 +90,10 @@ def list_imageData_with_labels(directory):
             file_name.append(image_name)
             labels.append(get_bin(count))
 
-    print(file_name)
+    return file_name,labels
 
-list_imageData_with_labels("../test_set/original.txt")
+files,labels = list_imageData_with_labels("../test_set/original.txt")
+files = list(map(read_image,files))
+# print(files[0])
+tfRecord_name = 'train.tfrecords'
+create_TFRecord.stash_example_protobuff_to_tfrecord(tfRecord_name,files,labels)

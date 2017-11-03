@@ -29,9 +29,12 @@ def stash_example_protobuff_to_tfrecord(name,files,labels):
     '''
     tfrecord_name = name
     writer = tf.python_io.TFRecordWriter(tfrecord_name)
-    
+    proto_buffs = list(map(transfer_to_protobuff,files,labels))
 
+    for example in proto_buffs:
+        writer.write(example.SerializeToString())
 
+    writer.close()
 
 def _int64_feature(value):
   return tf.train.Feature(int64_list=tf.train.Int64List(value=[value]))
