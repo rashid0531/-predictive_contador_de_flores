@@ -82,6 +82,9 @@ def list_imageData_with_labels(directory):
     file_name = []
     path = "../test_set/flower_plots/"
 
+    # for testing small dataset
+    path = "flower_plots/"
+
     with open(directory) as file_object:
 
         for each_line in file_object:
@@ -92,8 +95,12 @@ def list_imageData_with_labels(directory):
 
     return file_name,labels
 
-files,labels = list_imageData_with_labels("../test_set/original.txt")
+#files,labels = list_imageData_with_labels("../test_set/original.txt")
+
+# For small dataset to test in a local machine
+files,labels = list_imageData_with_labels("original.txt")
+
 files = list(map(read_image,files))
-# print(files[0])
+print(files[0])
 tfRecord_name = 'train.tfrecords'
 create_TFRecord.stash_example_protobuff_to_tfrecord(tfRecord_name,files,labels)
