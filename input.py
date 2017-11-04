@@ -26,20 +26,25 @@ def test_read_image(image):
     fn = image
     image_contents = tf.read_file(fn)
     im = tf.image.decode_image(image_contents, channels=3)
-    im = tf.image.resize_image_with_crop_or_pad(im, 500, 500)
+    im = tf.image.resize_image_with_crop_or_pad(im, 500, 700)
     print(im.shape)
     plt.imshow(im.eval())
     plt.show()
     sess.close()
 
-# test_read_image('flower.jpg')
+#test_read_image('flower_plots/flower.jpg')
 
 def read_image(image):
 
     fn = image
     image_contents = tf.read_file(fn)
     im = tf.image.decode_image(image_contents, channels=3)
-    im = tf.image.resize_image_with_crop_or_pad(im, 500, 500)
+    im = tf.image.resize_image_with_crop_or_pad(im, 500, 700)
+    # need to create a session and evaluate the decoded image by running it through session otherwise the data wont be converted to numpy array but as a tensor.
+    sess = tf.InteractiveSession()
+    im = sess.run(im)
+    sess.close()
+
     return im
 
 def get_bin(value):
@@ -99,8 +104,10 @@ def list_imageData_with_labels(directory):
 
 # For small dataset to test in a local machine
 files,labels = list_imageData_with_labels("original.txt")
-
 files = list(map(read_image,files))
-print(files[0])
 tfRecord_name = 'train.tfrecords'
 create_TFRecord.stash_example_protobuff_to_tfrecord(tfRecord_name,files,labels)
+
+# Ploting results received after trannsforming the tfrecord back to previous input format (numpy array)
+plt.imshow(create_TFRecord.read_tfrecords(tfRecord_name))
+plt.show()
