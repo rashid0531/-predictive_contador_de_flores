@@ -17,6 +17,7 @@ import matplotlib as mil
 from random import shuffle
 import glob
 import create_TFRecord
+from PIL import Image
 
 #This function reads single image file and converts it into a
 
@@ -46,6 +47,24 @@ def read_image(image):
     sess.close()
 
     return im
+
+
+def read_image_using_PIL(image):
+
+    image = Image.open(image)
+    image = image.resize((250,250))
+    image = np.asarray(image, np.uint8)
+    print(image)
+    print(image.shape)
+    img = Image.fromarray(image,'RGB')
+    img.show()
+    # image = np.asarray(image, np.uint8)
+    # shape = np.array(image.shape, np.int32)
+    # return image.tobytes(),shape.tobytes()
+    #return image.tobytes()
+
+read_image_using_PIL('flower_plots/violet_blossom.jpg')
+
 
 def get_bin(value):
 
@@ -103,11 +122,11 @@ def list_imageData_with_labels(directory):
 #files,labels = list_imageData_with_labels("../test_set/original.txt")
 
 # For small dataset to test in a local machine
-files,labels = list_imageData_with_labels("original.txt")
-files = list(map(read_image,files))
-tfRecord_name = 'train.tfrecords'
-create_TFRecord.stash_example_protobuff_to_tfrecord(tfRecord_name,files,labels)
-
-# Ploting results received after trannsforming the tfrecord back to previous input format (numpy array)
-plt.imshow(create_TFRecord.read_tfrecords(tfRecord_name))
-plt.show()
+# files,labels = list_imageData_with_labels("original.txt")
+# files = list(map(read_image,files))
+# tfRecord_name = 'train.tfrecords'
+# create_TFRecord.stash_example_protobuff_to_tfrecord(tfRecord_name,files,labels)
+#
+# # Ploting results received after transforming the tfrecord back to previous input format (numpy array)
+# plt.imshow(create_TFRecord.read_tfrecords(tfRecord_name))
+# plt.show()
