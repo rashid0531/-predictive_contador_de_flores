@@ -52,18 +52,16 @@ def read_image(image):
 def read_image_using_PIL(image):
 
     image = Image.open(image)
-    image = image.resize((250,250))
+    image = image.resize((700,700))
     image = np.asarray(image, np.uint8)
-    print(image)
-    print(image.shape)
-    img = Image.fromarray(image,'RGB')
-    img.show()
+    # print(image)
+    # print(image.shape)
+    # img = Image.fromarray(image,'RGB')
+    # img.show()
     # image = np.asarray(image, np.uint8)
     # shape = np.array(image.shape, np.int32)
     # return image.tobytes(),shape.tobytes()
-    #return image.tobytes()
-
-read_image_using_PIL('flower_plots/violet_blossom.jpg')
+    return image.tobytes()
 
 
 def get_bin(value):
@@ -104,7 +102,7 @@ def list_imageData_with_labels(directory):
     '''
     labels =[]
     file_name = []
-    path = "../test_set/flower_plots/"
+    #path = "../test_set/flower_plots/"
 
     # for testing small dataset
     path = "flower_plots/"
@@ -122,11 +120,16 @@ def list_imageData_with_labels(directory):
 #files,labels = list_imageData_with_labels("../test_set/original.txt")
 
 # For small dataset to test in a local machine
-# files,labels = list_imageData_with_labels("original.txt")
-# files = list(map(read_image,files))
-# tfRecord_name = 'train.tfrecords'
-# create_TFRecord.stash_example_protobuff_to_tfrecord(tfRecord_name,files,labels)
-#
-# # Ploting results received after transforming the tfrecord back to previous input format (numpy array)
-# plt.imshow(create_TFRecord.read_tfrecords(tfRecord_name))
-# plt.show()
+files,labels = list_imageData_with_labels("original.txt")
+files = list(map(read_image_using_PIL,files))
+tfRecord_name = 'train.tfrecords'
+create_TFRecord.stash_example_protobuff_to_tfrecord(tfRecord_name,files,labels)
+
+# Ploting results received after transforming the tfrecord back to previous input format (numpy array)
+returned_batched_images = create_TFRecord.read_tfrecords_as_batch(tfRecord_name,3)
+
+show_images = False
+if (show_images):
+    for i in range(3):
+        plt.imshow(returned_batched_images[0,i,:,:,:])
+        plt.show()

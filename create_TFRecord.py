@@ -11,7 +11,7 @@ def transfer_to_protobuff(image,label):
     an example proto buffer.
     '''
     feature = {
-        'imagedata': _bytes_feature(tf.compat.as_bytes(image.tostring())),
+        'imagedata': _bytes_feature(image),
         'label': _bytes_feature(tf.compat.as_bytes(label))
     }
 
@@ -39,14 +39,13 @@ def stash_example_protobuff_to_tfrecord(name,files,labels):
     writer.close()
 
 
-def read_tfrecords(tfrecord_name):
+def read_singleExample_tfrecord(tfrecord_name):
     '''
     This function converts the given tfrecord file back to the original format (numpy array or string)
     :param:
     -tfrecord_name : name of TFRecord file.
 
     '''
-
     #Create a queue to hold files
     filename_queue = tf.train.string_input_producer([tfrecord_name], num_epochs=1)
 
@@ -67,7 +66,37 @@ def read_tfrecords(tfrecord_name):
     img = tf.decode_raw(features['imagedata'],tf.uint8)
 
     # Reshape image data into the original shape
-    img = tf.reshape(img, [500, 700, 3])
+    img = tf.reshape(img, [700,700, 3])
+
+    # enable to see the visual plotting of single image
+    show = False
+
+    if(show):
+
+        # Dont know why i needed these following lines.
+        sess = tf.InteractiveSession()
+        init_op = tf.group(tf.global_variables_initializer(), tf.local_variables_initializer())
+        sess.run(init_op)
+        coord = tf.train.Coordinator()
+        threads = tf.train.start_queue_runners(coord=coord)
+
+        img = sess.run(img)
+        img = img.astype(np.uint8)
+        sess.close()
+
+    return img
+
+def read_tfrecords_as_batch(tfrecord_name,batch_size):
+    '''
+    This function runs "read_singleExample_tfrecord" as batch.
+
+    :param tfrecord_name:
+    :param batch_size: size of the batch.
+    :return: batch of images converted back to its original format. (array)
+    '''
+    image = read_singleExample_tfrecord(tfrecord_name)
+
+    image_batches = tf.train.shuffle_batch([image],batch_size=3,num_threads=4,capacity=3,min_after_dequeue=1)
 
     # Dont know why i needed these following lines.
     sess = tf.InteractiveSession()
@@ -76,11 +105,9 @@ def read_tfrecords(tfrecord_name):
     coord = tf.train.Coordinator()
     threads = tf.train.start_queue_runners(coord=coord)
 
-    img = sess.run(img)
-    img = img.astype(np.uint8)
-    sess.close()
+    batched_images = np.array(sess.run([image_batches]))
 
-    return img
+    return batched_images
 
 def _int64_feature(value):
   return tf.train.Feature(int64_list=tf.train.Int64List(value=[value]))
