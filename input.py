@@ -54,6 +54,18 @@ def read_image_using_PIL(image):
     image = Image.open(image)
     image = image.resize((700,700))
     image = np.asarray(image, np.uint8)
+
+    '''
+    For Alexnet, we need to convert the RGB to BGR. Swapping the position of the slices can do the trick.
+    But for images if converted to numpy array, by default the writing permission is set to False.
+    So, we need to check the Flags at first to see whether changing the Writing permission is required or not.
+    This following step is only required for CNN where the inputs are expected to be in BGR mode. Otherwise, we can skip these steps.
+    '''
+    if(image.flags['WRITEABLE'] == False):
+        image.setflags(write=1)
+
+    #swap the color channels
+    image[:,:,0],image[:,:,2] = image[:,:,2],image[:,:,0]
     # print(image)
     # print(image.shape)
     # img = Image.fromarray(image,'RGB')
@@ -120,16 +132,16 @@ def list_imageData_with_labels(directory):
 #files,labels = list_imageData_with_labels("../test_set/original.txt")
 
 # For small dataset to test in a local machine
-files,labels = list_imageData_with_labels("original.txt")
-files = list(map(read_image_using_PIL,files))
-tfRecord_name = 'train.tfrecords'
-create_TFRecord.stash_example_protobuff_to_tfrecord(tfRecord_name,files,labels)
-
-# Ploting results received after transforming the tfrecord back to previous input format (numpy array)
-returned_batched_images = create_TFRecord.read_tfrecords_as_batch(tfRecord_name,3)
-
-show_images = False
-if (show_images):
-    for i in range(3):
-        plt.imshow(returned_batched_images[0,i,:,:,:])
-        plt.show()
+# files,labels = list_imageData_with_labels("original.txt")
+# files = list(map(read_image_using_PIL,files))
+# tfRecord_name = 'train.tfrecords'
+# create_TFRecord.stash_example_protobuff_to_tfrecord(tfRecord_name,files,labels)
+#
+# # Ploting results received after transforming the tfrecord back to previous input format (numpy array)
+# returned_batched_images = create_TFRecord.read_tfrecords_as_batch(tfRecord_name,3)
+#
+# show_images = False
+# if (show_images):
+#     for i in range(3):
+#         plt.imshow(returned_batched_images[0,i,:,:,:])
+#         plt.show()
