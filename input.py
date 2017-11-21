@@ -84,19 +84,19 @@ def get_bin(value):
     '''
 
     if (int(value) in range(0,700)):
-        return "Bin0"
+        return 0
 
     elif (int(value) in range(700,800)):
-        return "Bin1"
+        return 1
 
     elif (int(value) in range(800,900)):
-        return "Bin2"
+        return 2
 
     elif (int(value) in range(900,1000)):
-        return "Bin3"
+        return 3
 
     else:
-        return "Bin4"
+        return 4
 
 
 def list_imageData_with_labels(directory):
@@ -132,16 +132,18 @@ def list_imageData_with_labels(directory):
 #files,labels = list_imageData_with_labels("../test_set/original.txt")
 
 # For small dataset to test in a local machine
-# files,labels = list_imageData_with_labels("original.txt")
-# files = list(map(read_image_using_PIL,files))
-# tfRecord_name = 'train.tfrecords'
-# create_TFRecord.stash_example_protobuff_to_tfrecord(tfRecord_name,files,labels)
-#
-# # Ploting results received after transforming the tfrecord back to previous input format (numpy array)
-# returned_batched_images = create_TFRecord.read_tfrecords_as_batch(tfRecord_name,3)
-#
-# show_images = False
-# if (show_images):
-#     for i in range(3):
-#         plt.imshow(returned_batched_images[0,i,:,:,:])
-#         plt.show()
+files,labels = list_imageData_with_labels("original.txt")
+files = list(map(read_image_using_PIL,files))
+tfRecord_name = 'train.tfrecords'
+
+create_TFRecord.stash_example_protobuff_to_tfrecord(tfRecord_name,files,labels)
+
+# Ploting results received after transforming the tfrecord back to previous input format (numpy array)
+returned_batched_images, returned_batched_lables= create_TFRecord.read_tfrecords_as_batch(tfRecord_name,3)
+print(returned_batched_lables)
+
+show_images = True
+if (show_images):
+    for i in range(3):
+        plt.imshow(returned_batched_images[i,:,:,:])
+        plt.show()
