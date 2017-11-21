@@ -12,7 +12,7 @@ def transfer_to_protobuff(image,label):
     '''
     feature = {
         'imagedata': _bytes_feature(image),
-        'label': _bytes_feature(tf.compat.as_bytes(label))
+        'label': _int64_feature(label)
     }
 
     # creating example proto buffer
@@ -31,6 +31,7 @@ def stash_example_protobuff_to_tfrecord(name,files,labels):
     '''
     tfrecord_name = name
     writer = tf.python_io.TFRecordWriter(tfrecord_name)
+
     proto_buffs = list(map(transfer_to_protobuff,files,labels))
 
     for example in proto_buffs:
@@ -55,7 +56,7 @@ def read_singleExample_tfrecord(tfrecord_name):
     # A feature dictionary which will hold the extracted features from deserialized protobuff.
     feature = {
         'imagedata': tf.FixedLenFeature([], tf.string),
-        'label': tf.FixedLenFeature([], tf.string),
+        'label': tf.FixedLenFeature([], tf.int64),
     }
 
     # Get the serialized example protobuff from tfrecord
@@ -67,6 +68,9 @@ def read_singleExample_tfrecord(tfrecord_name):
 
     # Reshape image data into the original shape
     img = tf.reshape(img, [700,700, 3])
+
+    # Reconstruct the labels
+    labels = tf.cast(features['label'], tf.int32)
 
     # enable to see the visual plotting of single image
     show = False
@@ -84,7 +88,7 @@ def read_singleExample_tfrecord(tfrecord_name):
         img = img.astype(np.uint8)
         sess.close()
 
-    return img
+    return img , labels
 
 def read_tfrecords_as_batch(tfrecord_name,batch_size):
     '''
@@ -94,9 +98,9 @@ def read_tfrecords_as_batch(tfrecord_name,batch_size):
     :param batch_size: size of the batch.
     :return: batch of images converted back to its original format. (array)
     '''
-    image = read_singleExample_tfrecord(tfrecord_name)
+    image,label = read_singleExample_tfrecord(tfrecord_name)
 
-    image_batches = tf.train.shuffle_batch([image],batch_size=3,num_threads=4,capacity=3,min_after_dequeue=1)
+    image_batches,label_batches = tf.train.shuffle_batch([image,label],batch_size=3,num_threads=4,capacity=3,min_after_dequeue=1)
 
     # Dont know why i needed these following lines.
     sess = tf.InteractiveSession()
@@ -105,9 +109,11 @@ def read_tfrecords_as_batch(tfrecord_name,batch_size):
     coord = tf.train.Coordinator()
     threads = tf.train.start_queue_runners(coord=coord)
 
-    batched_images = np.array(sess.run([image_batches]))
+    batched_images,batched_labels = sess.run([image_batches,label_batches])
 
-    return batched_images
+    # labels_images = np.array(sess.run([label_batches]))
+    # batched_images = np.array(batched_images)
+    return batched_images,batched_labels
 
 def _int64_feature(value):
   return tf.train.Feature(int64_list=tf.train.Int64List(value=[value]))

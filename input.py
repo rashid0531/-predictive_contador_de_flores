@@ -84,19 +84,19 @@ def get_bin(value):
     '''
 
     if (int(value) in range(0,700)):
-        return "Bin0"
+        return 0
 
     elif (int(value) in range(700,800)):
-        return "Bin1"
+        return 1
 
     elif (int(value) in range(800,900)):
-        return "Bin2"
+        return 2
 
     elif (int(value) in range(900,1000)):
-        return "Bin3"
+        return 3
 
     else:
-        return "Bin4"
+        return 4
 
 
 def list_imageData_with_labels(directory):
@@ -129,19 +129,38 @@ def list_imageData_with_labels(directory):
 
     return file_name,labels
 
+def get_train_test_validation_sets(path,train_percent,test_percent,validation_percent):
+
+    '''
+    Given path to a directory of input data, this function divides the whole dataset into
+    training,testing and validation sets based on the percentanges passed as parameters.
+
+    @:param:
+    train_percent: percentage of whole dataset that will be used as training set.
+    test_percent : percentage of whole dataset that will be used as testing set.
+    validation_percent : percentage of whole dataset that will be used as validation set.
+
+    :return:
+    trainset, testset, validationset
+    '''
+    files, labels = list_imageData_with_labels(path)
+
+
 #files,labels = list_imageData_with_labels("../test_set/original.txt")
 
 # For small dataset to test in a local machine
-# files,labels = list_imageData_with_labels("original.txt")
-# files = list(map(read_image_using_PIL,files))
-# tfRecord_name = 'train.tfrecords'
-# create_TFRecord.stash_example_protobuff_to_tfrecord(tfRecord_name,files,labels)
-#
-# # Ploting results received after transforming the tfrecord back to previous input format (numpy array)
-# returned_batched_images = create_TFRecord.read_tfrecords_as_batch(tfRecord_name,3)
-#
-# show_images = False
-# if (show_images):
-#     for i in range(3):
-#         plt.imshow(returned_batched_images[0,i,:,:,:])
-#         plt.show()
+files,labels = list_imageData_with_labels("original.txt")
+files = list(map(read_image_using_PIL,files))
+tfRecord_name = 'train.tfrecords'
+
+create_TFRecord.stash_example_protobuff_to_tfrecord(tfRecord_name,files,labels)
+
+# Ploting results received after transforming the tfrecord back to previous input format (numpy array)
+returned_batched_images, returned_batched_lables= create_TFRecord.read_tfrecords_as_batch(tfRecord_name,3)
+print(returned_batched_lables)
+
+show_images = True
+if (show_images):
+    for i in range(3):
+        plt.imshow(returned_batched_images[i,:,:,:])
+        plt.show()
