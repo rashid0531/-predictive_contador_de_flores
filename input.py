@@ -129,7 +129,7 @@ def list_imageData_with_labels(directory):
 
     return file_name,labels
 
-def get_train_test_validation_sets(path,train_percent,test_percent,validation_percent):
+def get_train_test_validation_sets(path,train_percent,test_percent):
 
     '''
     Given path to a directory of input data, this function divides the whole dataset into
@@ -141,26 +141,17 @@ def get_train_test_validation_sets(path,train_percent,test_percent,validation_pe
     validation_percent : percentage of whole dataset that will be used as validation set.
 
     :return:
-    trainset, testset, validationset
+    training set, training lables, testing set, testing lables.
     '''
     files, labels = list_imageData_with_labels(path)
 
+    print(files)
 
-#files,labels = list_imageData_with_labels("../test_set/original.txt")
+    limit_train = int(len(files) * train_percent)
+    train_set_data = files[0:limit_train]
+    train_set_lables = labels[0:limit_train]
 
-# For small dataset to test in a local machine
-files,labels = list_imageData_with_labels("original.txt")
-files = list(map(read_image_using_PIL,files))
-tfRecord_name = 'train.tfrecords'
+    test_set_data = files[limit_train:]
+    test_set_lables = labels[limit_train:]
 
-create_TFRecord.stash_example_protobuff_to_tfrecord(tfRecord_name,files,labels)
-
-# Ploting results received after transforming the tfrecord back to previous input format (numpy array)
-returned_batched_images, returned_batched_lables= create_TFRecord.read_tfrecords_as_batch(tfRecord_name,3)
-print(returned_batched_lables)
-
-show_images = True
-if (show_images):
-    for i in range(3):
-        plt.imshow(returned_batched_images[i,:,:,:])
-        plt.show()
+    return train_set_data,train_set_lables,test_set_data,test_set_lables

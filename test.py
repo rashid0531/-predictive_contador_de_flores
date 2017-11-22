@@ -60,12 +60,14 @@ def list_imageData_with_labels(directory):
 files,labels = list_imageData_with_labels("original.txt")
 
 print(len(files))
+print(files)
 
 limit = int(len(files)*0.7)
 print(limit)
-train_set = files[0:limit-1]
+train_set = files[0:limit]
 
-test_set = files[limit:-1]
+test_set = files[limit:]
 
 print(train_set)
 print(test_set)
+
