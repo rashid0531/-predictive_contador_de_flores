@@ -52,7 +52,7 @@ def read_image(image):
 def read_image_using_PIL(image):
 
     image = Image.open(image)
-    image = image.resize((700,700))
+    image = image.resize((227,227))
     image = np.asarray(image, np.uint8)
 
     '''

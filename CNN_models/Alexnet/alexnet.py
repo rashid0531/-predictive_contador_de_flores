@@ -26,7 +26,7 @@ class AlexNet(object):
         self.SKIP_LAYER = skip_layer
 
         if weights_path == 'DEFAULT':
-            self.WEIGHTS_PATH = 'bvlc_alexnet.npy'
+            self.WEIGHTS_PATH = 'CNN_models/Alexnet/bvlc_alexnet.npy'
         else:
             self.WEIGHTS_PATH = weights_path
 

@@ -67,7 +67,7 @@ def read_singleExample_tfrecord(tfrecord_name):
     img = tf.decode_raw(features['imagedata'],tf.uint8)
 
     # Reshape image data into the original shape
-    img = tf.reshape(img, [700,700, 3])
+    img = tf.reshape(img, [227,227, 3])
 
     # Reconstruct the labels
     labels = tf.cast(features['label'], tf.int32)
@@ -100,7 +100,17 @@ def read_tfrecords_as_batch(tfrecord_name,batch_size):
     '''
     image,label = read_singleExample_tfrecord(tfrecord_name)
 
-    image_batches,label_batches = tf.train.shuffle_batch([image,label],batch_size=3,num_threads=4,capacity=3,min_after_dequeue=1)
+    '''
+    For small dataset, one better practice is to use tf.train.batch instead of tf.train.shuffle_batch as 
+    the later enqueues each image and label multiple times in the tf.RandomShuffleQueue.
+    This explanation mentioned above is taken from: https://stackoverflow.com/questions/39283605/regarding-the-use-of-tf-train-shuffle-batch-to-create-batches 
+    '''
+    # To simply avoid queueing errors set allow_smaller_final_batch to 'True'
+    image_batches, label_batches = tf.train.batch([image, label], batch_size = batch_size, num_threads=4, allow_smaller_final_batch=True)
+
+    # For large dataset comment out the following line.
+    #image_batches,label_batches = tf.train.shuffle_batch([image,label],batch_size=3,num_threads=4,capacity=3,min_after_dequeue=1)
+
 
     # Dont know why i needed these following lines.
     sess = tf.InteractiveSession()
@@ -111,8 +121,6 @@ def read_tfrecords_as_batch(tfrecord_name,batch_size):
 
     batched_images,batched_labels = sess.run([image_batches,label_batches])
 
-    # labels_images = np.array(sess.run([label_batches]))
-    # batched_images = np.array(batched_images)
     return batched_images,batched_labels
 
 def _int64_feature(value):
