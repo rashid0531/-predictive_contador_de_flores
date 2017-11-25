@@ -14,7 +14,7 @@ import CNN_models.Alexnet.alexnet as cnnmodel
 
 
 # Input file
-path = "original.txt"
+path = "../test_set/original.txt"
 
 # Parameters for initializing dataset.
 train_percent = 0.7
@@ -22,7 +22,7 @@ test_percent = 0.3
 
 # Fetching training & testing set.
 train_set, train_label, test_set, test_label = input.get_train_test_validation_sets(path=path,train_percent=train_percent,test_percent=test_percent)
-print(len(train_set)+len(train_set))
+print(len(train_set)+len(test_set))
 
 # Read the image data as numpy array.
 train_set = list(map(input.read_image_using_PIL,train_set))
@@ -31,19 +31,9 @@ train_set = list(map(input.read_image_using_PIL,train_set))
 tfRecord_name = 'train.tfrecords'
 create_TFRecord.stash_example_protobuff_to_tfrecord(tfRecord_name,train_set,train_label)
 
-# Ploting results received after transforming the tfrecord back to previous input format (numpy array)
-returned_batched_images, returned_batched_lables= create_TFRecord.read_tfrecords_as_batch(tfRecord_name,5)
-# print(returned_batched_lables)
-#
-# show_images = True
-# if (show_images):
-#     for i in range(3):
-#         plt.imshow(returned_batched_images[i,:,:,:])
-#         plt.show()
-
 # Training params for learning the model
-learning_rate = 0.01
-num_epochs = 10
+learning_rate = 0.005
+num_epochs = 1
 batch_size = 5
 
 # Network parameters
@@ -52,7 +42,7 @@ num_classes = 5
 train_layers = ['fc8', 'fc7', 'fc6']
 
 # How often we want to write the tf.summary data to disk
-display_step = 20
+display_step = 10
 
 # Path for tf.summary.FileWriter and to store model checkpoints
 filewriter_path = "/tmp/finetune_alexnet/tensorboard"
@@ -121,40 +111,52 @@ saver = tf.train.Saver()
 train_batches_per_epoch = int(np.floor(len(train_set)/batch_size))
 val_batches_per_epoch = int(np.floor(len(test_set)/ batch_size))
 
+print(train_batches_per_epoch)
 
 # Start Tensorflow session
 with tf.Session() as sess:
 
-    # Initialize all variables
-    sess.run(tf.global_variables_initializer())
-
     # Add the model graph to TensorBoard
     writer.add_graph(sess.graph)
 
-    # Load the pretrained weights into the non-trainable layer
     model.load_initial_weights(sess)
 
     print("{} Start training...".format(datetime.now()))
     print("{} Open Tensorboard at --logdir {}".format(datetime.now(),
                                                       filewriter_path))
-'''
+
+    image, label = create_TFRecord.read_singleExample_tfrecord(tfRecord_name)
+    # To simply avoid queueing errors set allow_smaller_final_batch to 'True'
+    image_batches, label_batches = tf.train.batch([image, label], batch_size=batch_size, num_threads=4,
+                                                  allow_smaller_final_batch=True)
+
+    # Initialize all variables
+    init_op = tf.group(tf.global_variables_initializer(), tf.local_variables_initializer())
+    sess.run(init_op)
+    coord = tf.train.Coordinator()
+    threads = tf.train.start_queue_runners(coord=coord)
+
     # Loop over number of epochs
     for epoch in range(num_epochs):
 
         print("{} Epoch number: {}".format(datetime.now(), epoch+1))
 
         # Initialize iterator with the training dataset
-        sess.run(training_init_op)
+        # sess.run(training_init_op)
 
         for step in range(train_batches_per_epoch):
 
+            print("step :",step)
             # get next batch of data
-            img_batch, label_batch = sess.run(next_batch)
+            img_batch, label_batch = sess.run([image_batches,label_batches])
+
+            # Converting the labels to one-hot encoding.
+
+            label_batch = tf.one_hot(label_batch, 5)
+            label_batch = sess.run(label_batch)
 
             # And run the training op
-            sess.run(train_op, feed_dict={x: img_batch,
-                                          y: label_batch,
-                                          keep_prob: dropout_rate})
+            sess.run(train_op, feed_dict={x: img_batch,y: label_batch,keep_prob: dropout_rate})
 
             # Generate summary with the current batch of data and write to file
             if step % display_step == 0:
@@ -164,6 +166,16 @@ with tf.Session() as sess:
 
                 writer.add_summary(s, epoch*train_batches_per_epoch + step)
 
+
+    # Stop the threads
+    coord.request_stop()
+
+    # Wait for threads to stop
+    coord.join(threads)
+    print("Done")
+
+
+'''
         # Validate the model on the entire validation set
         print("{} Start validation".format(datetime.now()))
         sess.run(validation_init_op)

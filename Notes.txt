@@ -1,1 +1,3 @@
-# Need to change the RGB  to BGR as Alexnext assumes the images are channeled as BGR.
+# Need to change the RGB  to BGR as Alexnext assumes the images are channeled as BGR. (Done)
+
+# Need to find the relation between epoc steps and batches of images.

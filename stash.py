@@ -16,3 +16,15 @@
 #     for i in range(3):
 #         plt.imshow(returned_batched_images[i,:,:,:])
 #         plt.show()
+
+
+# Ploting results received after transforming the tfrecord back to previous input format (numpy array)
+# returned_batched_images, returned_batched_lables= create_TFRecord.read_tfrecords_as_batch(tfRecord_name,5)
+
+# print(returned_batched_lables)
+#
+# show_images = True
+# if (show_images):
+#     for i in range(3):
+#         plt.imshow(returned_batched_images[i,:,:,:])
+#         plt.show()

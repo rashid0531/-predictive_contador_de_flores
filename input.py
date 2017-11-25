@@ -117,7 +117,7 @@ def list_imageData_with_labels(directory):
     #path = "../test_set/flower_plots/"
 
     # for testing small dataset
-    path = "flower_plots/"
+    path = "../test_set/flower_plots/"
 
     with open(directory) as file_object:
 
@@ -144,8 +144,6 @@ def get_train_test_validation_sets(path,train_percent,test_percent):
     training set, training lables, testing set, testing lables.
     '''
     files, labels = list_imageData_with_labels(path)
-
-    print(files)
 
     limit_train = int(len(files) * train_percent)
     train_set_data = files[0:limit_train]
