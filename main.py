@@ -7,6 +7,7 @@ import glob
 import create_TFRecord
 from PIL import Image
 from datetime import datetime
+import os
 
 import input
 import create_TFRecord
@@ -22,14 +23,21 @@ test_percent = 0.3
 
 # Fetching training & testing set.
 train_set, train_label, test_set, test_label = input.get_train_test_validation_sets(path=path,train_percent=train_percent,test_percent=test_percent)
-print(len(train_set)+len(test_set))
+print(len(test_set))
 
-# Read the image data as numpy array.
+# Read the image data as numpy array for training set.
 train_set = list(map(input.read_image_using_PIL,train_set))
 
 # Creating TFRecords for training set.
-tfRecord_name = 'train.tfrecords'
-create_TFRecord.stash_example_protobuff_to_tfrecord(tfRecord_name,train_set,train_label)
+tfRecord_name_train = 'train.tfrecords'
+create_TFRecord.stash_example_protobuff_to_tfrecord(tfRecord_name_train,train_set,train_label)
+
+# Read the image data as numpy array for testing set.
+test_set = list(map(input.read_image_using_PIL,test_set))
+
+# Creating TFRecords for testing set.
+tfRecord_name_test = 'test.tfrecords'
+create_TFRecord.stash_example_protobuff_to_tfrecord(tfRecord_name_test,test_set,test_label)
 
 # Training params for learning the model
 learning_rate = 0.005
@@ -89,7 +97,6 @@ for var in var_list:
 # Add the loss to summary
 tf.summary.scalar('cross_entropy', loss)
 
-
 # Evaluation op: Accuracy of the model
 with tf.name_scope("accuracy"):
     correct_pred = tf.equal(tf.argmax(score, 1), tf.argmax(y, 1))
@@ -111,7 +118,7 @@ saver = tf.train.Saver()
 train_batches_per_epoch = int(np.floor(len(train_set)/batch_size))
 val_batches_per_epoch = int(np.floor(len(test_set)/ batch_size))
 
-print(train_batches_per_epoch)
+print(val_batches_per_epoch)
 
 # Start Tensorflow session
 with tf.Session() as sess:
@@ -125,10 +132,13 @@ with tf.Session() as sess:
     print("{} Open Tensorboard at --logdir {}".format(datetime.now(),
                                                       filewriter_path))
 
-    image, label = create_TFRecord.read_singleExample_tfrecord(tfRecord_name)
+    image, label = create_TFRecord.read_singleExample_tfrecord(tfRecord_name_train)
     # To simply avoid queueing errors set allow_smaller_final_batch to 'True'
-    image_batches, label_batches = tf.train.batch([image, label], batch_size=batch_size, num_threads=4,
-                                                  allow_smaller_final_batch=True)
+    image_batches, label_batches = tf.train.batch([image, label], batch_size=batch_size, num_threads=4,allow_smaller_final_batch=True)
+
+    image_test, label_test = create_TFRecord.read_singleExample_tfrecord(tfRecord_name_test)
+    # To simply avoid queueing errors set allow_smaller_final_batch to 'True'
+    image_batches_test, label_batches_test = tf.train.batch([image_test, label_test], batch_size=batch_size,num_threads=4, allow_smaller_final_batch=True)
 
     # Initialize all variables
     init_op = tf.group(tf.global_variables_initializer(), tf.local_variables_initializer())
@@ -146,7 +156,7 @@ with tf.Session() as sess:
 
         for step in range(train_batches_per_epoch):
 
-            print("step :",step)
+            # print("step :",step)
             # get next batch of data
             img_batch, label_batch = sess.run([image_batches,label_batches])
 
@@ -167,29 +177,28 @@ with tf.Session() as sess:
                 writer.add_summary(s, epoch*train_batches_per_epoch + step)
 
 
-    # Stop the threads
-    coord.request_stop()
-
-    # Wait for threads to stop
-    coord.join(threads)
-    print("Done")
-
-
-'''
         # Validate the model on the entire validation set
         print("{} Start validation".format(datetime.now()))
-        sess.run(validation_init_op)
+
         test_acc = 0.
         test_count = 0
+
         for _ in range(val_batches_per_epoch):
 
-            img_batch, label_batch = sess.run(next_batch)
-            acc = sess.run(accuracy, feed_dict={x: img_batch,
-                                                y: label_batch,
+            image_test, label_test = sess.run([image_batches_test,label_batches_test])
+            label_test = tf.one_hot(label_test, 5)
+            label_test = sess.run(label_test)
+
+            # print(label_batch.shape)
+
+            acc = sess.run(accuracy, feed_dict={x: image_test,
+                                                y: label_test,
                                                 keep_prob: 1.})
             test_acc += acc
             test_count += 1
+
         test_acc /= test_count
+
         print("{} Validation Accuracy = {:.4f}".format(datetime.now(),
                                                        test_acc))
         print("{} Saving checkpoint of model...".format(datetime.now()))
@@ -201,5 +210,10 @@ with tf.Session() as sess:
 
         print("{} Model checkpoint saved at {}".format(datetime.now(),
                                                        checkpoint_name))
-    
-'''
+
+    # Stop the threads
+    coord.request_stop()
+
+    # Wait for threads to stop
+    coord.join(threads)
+    print("Done")

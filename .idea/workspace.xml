@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="63edb0c6-feb5-4790-95fa-86231fb09ffd" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/train.tfrecords" afterPath="$PROJECT_DIR$/train.tfrecords" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Notes.txt" afterPath="$PROJECT_DIR$/Notes.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/input.py" afterPath="$PROJECT_DIR$/input.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/main.py" afterPath="$PROJECT_DIR$/main.py" />
@@ -41,8 +40,8 @@
       <file leaf-file-name="main.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/main.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1710">
-              <caret line="25" column="0" lean-forward="true" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+            <state relative-caret-position="234">
+              <caret line="202" column="65" lean-forward="true" selection-start-line="202" selection-start-column="65" selection-end-line="202" selection-end-column="65" />
               <folding>
                 <element signature="e#0#23#0" expanded="true" />
               </folding>
@@ -85,8 +84,8 @@
       <file leaf-file-name="stash.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/stash.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="522">
-              <caret line="29" column="20" lean-forward="false" selection-start-line="29" selection-start-column="20" selection-end-line="29" selection-end-column="20" />
+            <state relative-caret-position="396">
+              <caret line="22" column="0" lean-forward="true" selection-start-line="20" selection-start-column="0" selection-end-line="29" selection-end-column="20" />
               <folding />
             </state>
           </provider>
@@ -735,14 +734,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/stash.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="522">
-          <caret line="29" column="20" lean-forward="false" selection-start-line="29" selection-start-column="20" selection-end-line="29" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/CNN_models/Alexnet/alexnet.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
@@ -769,6 +760,14 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/stash.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="22" column="0" lean-forward="true" selection-start-line="20" selection-start-column="0" selection-end-line="29" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/input.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1872">
@@ -781,8 +780,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1710">
-          <caret line="25" column="0" lean-forward="true" selection-start-line="25" selection-start-column="0" selection-end-line="25" selection-end-column="0" />
+        <state relative-caret-position="234">
+          <caret line="202" column="65" lean-forward="true" selection-start-line="202" selection-start-column="65" selection-end-line="202" selection-end-column="65" />
           <folding>
             <element signature="e#0#23#0" expanded="true" />
           </folding>
