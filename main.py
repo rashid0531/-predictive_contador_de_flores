@@ -41,7 +41,7 @@ create_TFRecord.stash_example_protobuff_to_tfrecord(tfRecord_name_test,test_set,
 
 # Training params for learning the model
 learning_rate = 0.005
-num_epochs = 1
+num_epochs = 10
 batch_size = 5
 
 # Network parameters
@@ -132,14 +132,20 @@ with tf.Session() as sess:
     print("{} Open Tensorboard at --logdir {}".format(datetime.now(),
                                                       filewriter_path))
 
+    min_after_dequeue = 10 * batch_size
+    capacity = 20 * batch_size
+
     image, label = create_TFRecord.read_singleExample_tfrecord(tfRecord_name_train)
     # To simply avoid queueing errors set allow_smaller_final_batch to 'True'
-    image_batches, label_batches = tf.train.batch([image, label], batch_size=batch_size, num_threads=4,allow_smaller_final_batch=True)
+    #image_batches, label_batches = tf.train.batch([image, label], batch_size=batch_size, num_threads=4,allow_smaller_final_batch=True)
+    image_batches, label_batches = tf.train.shuffle_batch([image, label], batch_size=batch_size,capacity=capacity, min_after_dequeue=min_after_dequeue,
+                                                          num_threads=4,allow_smaller_final_batch=True)
 
     image_test, label_test = create_TFRecord.read_singleExample_tfrecord(tfRecord_name_test)
     # To simply avoid queueing errors set allow_smaller_final_batch to 'True'
-    image_batches_test, label_batches_test = tf.train.batch([image_test, label_test], batch_size=batch_size,num_threads=4, allow_smaller_final_batch=True)
-
+    #image_batches_test, label_batches_test = tf.train.batch([image_test, label_test], batch_size=batch_size,num_threads=4, allow_smaller_final_batch=True)
+    image_batches_test, label_batches_test = tf.train.shuffle_batch([image_test, label_test], batch_size=batch_size,capacity=capacity, min_after_dequeue=min_after_dequeue,
+                                                            num_threads=4, allow_smaller_final_batch=True)
     # Initialize all variables
     init_op = tf.group(tf.global_variables_initializer(), tf.local_variables_initializer())
     sess.run(init_op)

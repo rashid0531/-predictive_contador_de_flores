@@ -48,7 +48,7 @@ def read_singleExample_tfrecord(tfrecord_name):
 
     '''
     #Create a queue to hold files
-    filename_queue = tf.train.string_input_producer([tfrecord_name], num_epochs=1)
+    filename_queue = tf.train.string_input_producer([tfrecord_name], num_epochs=None)
 
     # A TFRecord reader to read each element of the file queue.
     reader = tf.TFRecordReader()
