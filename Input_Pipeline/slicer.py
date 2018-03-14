@@ -9,7 +9,8 @@ Script name: slicer.py
 import image_slicer
 import os
 
-
+output_directory = "/u1/rashid/Data/predictive_flower_counter/splited_images"
+input_directory = "/discus/"
 
 # This function slices a given image into user given number of tiles.
 def make_Tiles(img_path,number_of_tiles,directory):
