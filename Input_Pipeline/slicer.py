@@ -14,7 +14,7 @@ import os
 # This function slices a given image into user given number of tiles.
 def make_Tiles(img_path,number_of_tiles,directory):
 
-    tiles = image_slicer.slice('flower.jpg', number_of_tiles,save =False)
+    tiles = image_slicer.slice(img_path, number_of_tiles,save =False)
 
     # Check if the given directory exists, if not create new directory.
     if not os.path.exists(directory):
@@ -24,4 +24,4 @@ def make_Tiles(img_path,number_of_tiles,directory):
 
 
 # test if the function works.
-make_Tiles('flower.jpg',5,"../image_tiles")
+make_Tiles('../Preprocess_data/cropped_image.jpg',8,"../image_tiles")
