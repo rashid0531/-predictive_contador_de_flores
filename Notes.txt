@@ -1,3 +1,6 @@
 # Need to change the RGB  to BGR as Alexnext assumes the images are channeled as BGR. (Done)
 
 # Need to find the relation between epoc steps and batches of images.
+
+# Read the performance model guide from tensorflow documentation page for getting idea about distributed file read.
+
