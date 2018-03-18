@@ -14,9 +14,9 @@ def crop_from_coordinates(coordinates,image):
 
     img = Image.open(image)
 
-    if(hasattr(img,'filename')):
-        print(img.filename)
-        save_as = 'cropped_'+img.filename+'.jpg'
+    # if(hasattr(img,'filename')):
+    #     print(img.filename)
+    #     save_as = 'cropped_'+img.filename+'.jpg'
 
     # Get the size of the image
     width, height = img.size
@@ -42,9 +42,11 @@ def crop_from_coordinates(coordinates,image):
 
     box = coor
     cropped_image = img.crop(four_points)
-    cropped_image.save(save_as)
+    cropped_image.save("dhiki.jpg")
     print(number_of_tiles)
 
 
-coor = (140,490)
-crop_from_coordinates(coor,"./frame000003.jpg")
+if __name__== "__main__":
+
+    coor = (140,490)
+    crop_from_coordinates(coor,"./1120_frame000001.jpg")

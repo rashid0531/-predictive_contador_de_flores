@@ -27,15 +27,14 @@ def make_Tiles(img_path,number_of_tiles,directory):
 
     # Get the size of the image
     width, height = img.size
+    points=(0,0,224,224)
+    frame = img.crop(points)
+    frame.save("chiki.jpg")
 
-    tiles = image_slicer.split_image(img_path, number_of_tiles,save =False)
-
-    # Check if the given directory exists, if not create new directory.
-    if not os.path.exists(directory):
-        os.makedirs(directory)
-
-    image_slicer.save_tiles(tiles, directory=directory,prefix='slice')
 
 
 # test if the function works.
 make_Tiles('../Preprocess_data/dhiki.jpg', 5,"../image_tiles")
+
+
+
