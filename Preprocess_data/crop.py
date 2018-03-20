@@ -33,7 +33,7 @@ def crop_from_coordinates(coordinates,image):
     max_multiple_of_224_Y = int((height - Y) / 224)
 
     # This max multiples can also be used to determine the number of tiles that I want to divide the cropped image into.
-    number_of_tiles = max_multiple_of_224_X * max_multiple_of_224_Y
+    number_of_tiles = (max_multiple_of_224_X,max_multiple_of_224_Y)
 
     max_border_X  = X + (224*max_multiple_of_224_X)
     max_border_Y =  Y + (224*max_multiple_of_224_Y)
