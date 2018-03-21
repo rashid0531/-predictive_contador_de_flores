@@ -2,18 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="63edb0c6-feb5-4790-95fa-86231fb09ffd" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/Input_Pipeline/another_slicer.py" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/image_tiles/slice_01_01.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/image_tiles/slice_01_02.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/image_tiles/slice_01_03.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/image_tiles/slice_02_01.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/image_tiles/slice_02_02.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/image_tiles/slice_02_03.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/image_tiles/slice_03_01.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/image_tiles/slice_03_02.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/image_tiles/slice_03_03.png" afterPath="" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/image_tiles/crop_0_0_.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/image_tiles/crop_0_1_.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/image_tiles/crop_0_2_.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/image_tiles/crop_0_3_.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/image_tiles/crop_0_4_.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/image_tiles/crop_1_0_.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/image_tiles/crop_1_1_.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/image_tiles/crop_1_2_.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/image_tiles/crop_1_3_.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/image_tiles/crop_1_4_.jpg" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Preprocess_data/cropped_image.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Preprocess_data/cropped_image_3.jpg" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Preprocess_data/dhiki.png" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/Preprocess_data/yo.jpeg" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/predictive_flower_counter.iml" afterPath="$PROJECT_DIR$/.idea/predictive_flower_counter.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Input_Pipeline/slicer.py" afterPath="$PROJECT_DIR$/Input_Pipeline/slicer.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Input_Pipeline/another_slicer.py" afterPath="$PROJECT_DIR$/Input_Pipeline/another_slicer.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Preprocess_data/crop.py" afterPath="$PROJECT_DIR$/Preprocess_data/crop.py" />
     </list>
     <ignored path="predictive_flower_counter.iws" />
@@ -36,8 +43,8 @@
       <file leaf-file-name="slicer.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Input_Pipeline/slicer.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="540">
-              <caret line="30" column="60" lean-forward="true" selection-start-line="30" selection-start-column="60" selection-end-line="30" selection-end-column="60" />
+            <state relative-caret-position="486">
+              <caret line="30" column="60" lean-forward="false" selection-start-line="30" selection-start-column="60" selection-end-line="30" selection-end-column="60" />
               <folding>
                 <element signature="e#283#302#0" expanded="true" />
               </folding>
@@ -48,8 +55,8 @@
       <file leaf-file-name="crop.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Preprocess_data/crop.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="360">
-              <caret line="44" column="22" lean-forward="true" selection-start-line="44" selection-start-column="22" selection-end-line="44" selection-end-column="35" />
+            <state relative-caret-position="792">
+              <caret line="44" column="22" lean-forward="false" selection-start-line="44" selection-start-column="22" selection-end-line="44" selection-end-column="35" />
               <folding>
                 <element signature="e#0#31#0" expanded="true" />
               </folding>
@@ -60,10 +67,10 @@
       <file leaf-file-name="another_slicer.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Input_Pipeline/another_slicer.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="242">
-              <caret line="27" column="31" lean-forward="true" selection-start-line="27" selection-start-column="31" selection-end-line="27" selection-end-column="31" />
+            <state relative-caret-position="269">
+              <caret line="43" column="60" lean-forward="true" selection-start-line="43" selection-start-column="60" selection-end-line="43" selection-end-column="60" />
               <folding>
-                <element signature="e#283#302#0" expanded="true" />
+                <element signature="e#252#261#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -72,8 +79,8 @@
       <file leaf-file-name="input.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/input.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="191">
-              <caret line="55" column="5" lean-forward="true" selection-start-line="55" selection-start-column="4" selection-end-line="55" selection-end-column="39" />
+            <state relative-caret-position="990">
+              <caret line="55" column="5" lean-forward="false" selection-start-line="55" selection-start-column="4" selection-end-line="55" selection-end-column="39" />
               <folding>
                 <element signature="e#329#352#0" expanded="true" />
               </folding>
@@ -84,7 +91,7 @@
       <file leaf-file-name="create_TFRecord.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/create_TFRecord.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="18">
+            <state relative-caret-position="1782">
               <caret line="100" column="45" lean-forward="false" selection-start-line="100" selection-start-column="18" selection-end-line="100" selection-end-column="45" />
               <folding>
                 <element signature="e#0#23#0" expanded="true" />
@@ -128,8 +135,8 @@
         <option value="$PROJECT_DIR$/test.py" />
         <option value="$USER_HOME$/.virtualenvs/dnn/lib/python3.5/site-packages/image_slicer/main.py" />
         <option value="$PROJECT_DIR$/Preprocess_data/filter_images.py" />
-        <option value="$PROJECT_DIR$/Preprocess_data/crop.py" />
         <option value="$PROJECT_DIR$/Input_Pipeline/slicer.py" />
+        <option value="$PROJECT_DIR$/Preprocess_data/crop.py" />
         <option value="$PROJECT_DIR$/Input_Pipeline/another_slicer.py" />
       </list>
     </option>
@@ -158,8 +165,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -197,6 +202,8 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scratches" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -320,8 +327,8 @@
     <recent_temporary>
       <list size="5">
         <item index="0" class="java.lang.String" itemvalue="Python.another_slicer" />
-        <item index="1" class="java.lang.String" itemvalue="Python.slicer" />
-        <item index="2" class="java.lang.String" itemvalue="Python.crop" />
+        <item index="1" class="java.lang.String" itemvalue="Python.crop" />
+        <item index="2" class="java.lang.String" itemvalue="Python.slicer" />
         <item index="3" class="java.lang.String" itemvalue="Python.filter_images" />
         <item index="4" class="java.lang.String" itemvalue="Python.test" />
       </list>
@@ -361,26 +368,38 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="57" y="-4" width="1863" height="1084" extended-state="6" />
+    <frame x="589" y="352" width="1865" height="1092" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13043478" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13208586" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3061651" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33089006" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3277487" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32984293" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3277487" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3277487" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3061651" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33053514" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3277487" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32984293" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32738718" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32984293" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13192183" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32948583" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
+      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -435,42 +454,25 @@
           <url>file://$PROJECT_DIR$/Preprocess_data/crop.py</url>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Input_Pipeline/another_slicer.py</url>
+          <line>8</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="2" />
+      <option name="time" value="3" />
     </breakpoint-manager>
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/Input_Pipeline/_01_02.png" />
-    <entry file="file://$PROJECT_DIR$/Input_Pipeline/_01_03.png" />
-    <entry file="file://$PROJECT_DIR$/Input_Pipeline/_02_01.png" />
-    <entry file="file://$PROJECT_DIR$/Input_Pipeline/_02_02.png" />
-    <entry file="file://$PROJECT_DIR$/Input_Pipeline/_02_03.png" />
-    <entry file="file://$PROJECT_DIR$/Input_Pipeline/flower_02_03.png" />
-    <entry file="file://$PROJECT_DIR$/Input_Pipeline/flower_02_02.png" />
-    <entry file="file://$PROJECT_DIR$/Input_Pipeline/flower_02_01.png" />
-    <entry file="file://$PROJECT_DIR$/Input_Pipeline/flower_01_03.png" />
     <entry file="file://$PROJECT_DIR$/Input_Pipeline/flower_01_02.png" />
     <entry file="file://$PROJECT_DIR$/Input_Pipeline/flower_01_01.png" />
-    <entry file="file://$USER_HOME$/.virtualenvs/dnn/lib/python3.5/site-packages/image_slicer/main.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="594">
-          <caret line="152" column="41" lean-forward="false" selection-start-line="152" selection-start-column="41" selection-end-line="152" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.virtualenvs/dnn/lib/python3.5/site-packages/PIL/ImageFile.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="203">
-          <caret line="58" column="0" lean-forward="false" selection-start-line="58" selection-start-column="0" selection-end-line="58" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$USER_HOME$/.virtualenvs/dnn/lib/python3.5/site-packages/image_slicer/main.py" />
+    <entry file="file://$USER_HOME$/.virtualenvs/dnn/lib/python3.5/site-packages/PIL/ImageFile.py" />
     <entry file="file://$PROJECT_DIR$/CNN_models/Alexnet/alexnet.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="18">
           <caret line="1" column="46" lean-forward="false" selection-start-line="1" selection-start-column="46" selection-end-line="1" selection-end-column="46" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -483,7 +485,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3114">
           <caret line="181" column="44" lean-forward="false" selection-start-line="181" selection-start-column="44" selection-end-line="181" selection-end-column="44" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -492,141 +493,43 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Preprocess_data/yo.jpeg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/Preprocess_data/yo.jpeg" />
     <entry file="file://$PROJECT_DIR$/Preprocess_data/1120_frame000001.jpg">
       <provider selected="true" editor-type-id="images">
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/image_tiles/slice_01_04.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/image_tiles/slice_03_03.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/image_tiles/slice_03_02.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/image_tiles/slice_03_01.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/image_tiles/slice_02_04.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Preprocess_data/cropped_image.jpg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/image_tiles/slice_03_04.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Preprocess_data/cropped_image_3.jpg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Preprocess_data/dhiki.jpg">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/image_tiles/slice_01_04.png" />
+    <entry file="file://$PROJECT_DIR$/image_tiles/slice_03_03.png" />
+    <entry file="file://$PROJECT_DIR$/image_tiles/slice_03_02.png" />
+    <entry file="file://$PROJECT_DIR$/image_tiles/slice_03_01.png" />
+    <entry file="file://$PROJECT_DIR$/image_tiles/slice_02_04.png" />
+    <entry file="file://$PROJECT_DIR$/Preprocess_data/cropped_image.jpg" />
+    <entry file="file://$PROJECT_DIR$/image_tiles/slice_03_04.png" />
+    <entry file="file://$PROJECT_DIR$/Preprocess_data/cropped_image_3.jpg" />
     <entry file="file://$PROJECT_DIR$/Preprocess_data/filter_images.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="378">
           <caret line="21" column="0" lean-forward="false" selection-start-line="21" selection-start-column="0" selection-end-line="21" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#11#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/image_tiles/slice_01_01.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/image_tiles/slice_01_02.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/image_tiles/slice_01_03.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/image_tiles/slice_02_01.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/image_tiles/slice_02_02.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/image_tiles/slice_02_03.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$USER_HOME$/.virtualenvs/dnn/lib/python3.5/site-packages/PIL/Image.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="311">
-          <caret line="1926" column="0" lean-forward="false" selection-start-line="1926" selection-start-column="0" selection-end-line="1926" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Input_Pipeline/slice_dhiki_1.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Input_Pipeline/slice_dhiki_2.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Input_Pipeline/slice_dhiki_3.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Input_Pipeline/slice_dhiki_4.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Input_Pipeline/slice_dhiki_5.png">
-      <provider selected="true" editor-type-id="images">
-        <state />
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/image_tiles/slice_01_01.png" />
+    <entry file="file://$PROJECT_DIR$/image_tiles/slice_01_02.png" />
+    <entry file="file://$PROJECT_DIR$/image_tiles/slice_01_03.png" />
+    <entry file="file://$PROJECT_DIR$/image_tiles/slice_02_01.png" />
+    <entry file="file://$PROJECT_DIR$/image_tiles/slice_02_02.png" />
+    <entry file="file://$PROJECT_DIR$/image_tiles/slice_02_03.png" />
+    <entry file="file://$USER_HOME$/.virtualenvs/dnn/lib/python3.5/site-packages/PIL/Image.py" />
+    <entry file="file://$PROJECT_DIR$/Input_Pipeline/slice_dhiki_1.png" />
+    <entry file="file://$PROJECT_DIR$/Input_Pipeline/slice_dhiki_2.png" />
+    <entry file="file://$PROJECT_DIR$/Input_Pipeline/slice_dhiki_3.png" />
+    <entry file="file://$PROJECT_DIR$/Input_Pipeline/slice_dhiki_4.png" />
+    <entry file="file://$PROJECT_DIR$/Input_Pipeline/slice_dhiki_5.png" />
     <entry file="file://$PROJECT_DIR$/main.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-2322">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="e#0#23#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -634,7 +537,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -642,51 +544,11 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/create_TFRecord.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="100" column="45" lean-forward="false" selection-start-line="100" selection-start-column="18" selection-end-line="100" selection-end-column="45" />
-          <folding>
-            <element signature="e#0#23#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/input.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="191">
-          <caret line="55" column="5" lean-forward="true" selection-start-line="55" selection-start-column="4" selection-end-line="55" selection-end-column="39" />
-          <folding>
-            <element signature="e#329#352#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Input_Pipeline/slicer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="30" column="60" lean-forward="true" selection-start-line="30" selection-start-column="60" selection-end-line="30" selection-end-column="60" />
-          <folding>
-            <element signature="e#283#302#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Preprocess_data/crop.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="44" column="22" lean-forward="true" selection-start-line="44" selection-start-column="22" selection-end-line="44" selection-end-column="35" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Preprocess_data/dhiki.png">
+    <entry file="file://$PROJECT_DIR$/Preprocess_data/dhiki.png" />
+    <entry file="file://$PROJECT_DIR$/Input_Pipeline/flower.jpg">
       <provider selected="true" editor-type-id="images">
         <state />
       </provider>
@@ -696,10 +558,83 @@
         <state />
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/input.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="990">
+          <caret line="55" column="5" lean-forward="false" selection-start-line="55" selection-start-column="4" selection-end-line="55" selection-end-column="39" />
+          <folding>
+            <element signature="e#329#352#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/create_TFRecord.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1782">
+          <caret line="100" column="45" lean-forward="false" selection-start-line="100" selection-start-column="18" selection-end-line="100" selection-end-column="45" />
+          <folding>
+            <element signature="e#0#23#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/image_tiles/chiki.jpg" />
+    <entry file="file://$PROJECT_DIR$/image_tiles/chiki1.jpg" />
+    <entry file="file://$PROJECT_DIR$/image_tiles/chiki2.jpg" />
+    <entry file="file://$PROJECT_DIR$/image_tiles/crop_0_2_.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/image_tiles/crop_0_3_.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Preprocess_data/crop.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="792">
+          <caret line="44" column="22" lean-forward="false" selection-start-line="44" selection-start-column="22" selection-end-line="44" selection-end-column="35" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Preprocess_data/dhiki.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/image_tiles/crop_1_4_.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/image_tiles/crop_0_0_.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/image_tiles/crop_0_1_.jpg">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/Input_Pipeline/another_slicer.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="242">
-          <caret line="27" column="31" lean-forward="true" selection-start-line="27" selection-start-column="31" selection-end-line="27" selection-end-column="31" />
+        <state relative-caret-position="269">
+          <caret line="43" column="60" lean-forward="true" selection-start-line="43" selection-start-column="60" selection-end-line="43" selection-end-column="60" />
+          <folding>
+            <element signature="e#252#261#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Input_Pipeline/slicer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="486">
+          <caret line="30" column="60" lean-forward="false" selection-start-line="30" selection-start-column="60" selection-end-line="30" selection-end-column="60" />
           <folding>
             <element signature="e#283#302#0" expanded="true" />
           </folding>
