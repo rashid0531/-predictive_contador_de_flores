@@ -1,28 +1,36 @@
 import glob
 import sys
+import os
 
-def get_files(directory):
+def get_files(directory,coordinate_path):
 
-    dict={}
-
+    cameraid_capturing_days=[]
     for filename in glob.glob(directory+"/*"):
-        dict['collection_date'] = filename.split("/")[-1]
-        # print(dict['collection_date'])
-        camera_id=[]
-        for sub_filename in glob.glob(filename+"/*"):
+        cameraid_capturing_days.append(filename.split("/")[-1])
 
-            camera_info = []
+    print(len(cameraid_capturing_days))
 
-            camera_info.append(sub_filename.split("/")[-1])
-        # dict['camera_id'] = camera_id
-            for sub_file_images in glob.glob(sub_filename+"/*"):
+    # Check if the file exists, if not then create a new file.
+    try:
+        with open(coordinate_path,'r') as file_obj:
+            file_contents = file_obj.read()
 
-                days =[]
-                days.append(sub_file_images.split("/")[-1])
+    except FileNotFoundError:
+        msg = coordinate_path + " does not exist."
+        print(msg)
+        prompt = input("Want to create the co-ordinate file [y/n]? \n")
 
-            print(days)
+        # After creating the file I want to populate it with the camera days. So that it becomes easier for me to manually keep record of coordinates for each camera.
+        # This part of code automates boring stuffs.
+
+        if (prompt == 'y' or "yes"):
+            with open(coordinate_path,'w') as file_obj:
+                for i in cameraid_capturing_days:
+                    file_obj.write(i+" : "+"\n")
 
 
 if __name__ == "__main__":
 
-    get_files(sys.argv[1])
+    coordinate_path = "/discus/P2IRC/rashid/co_ordinates.txt"
+
+    get_files(sys.argv[1],coordinate_path)
