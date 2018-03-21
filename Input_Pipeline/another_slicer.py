@@ -4,9 +4,6 @@ email:  <mrc689@mail.usask.ca>
 Script name: slicer.py
 '''
 
-# For slicing images a library called image_slicer is used whose details can be found in
-# their documentation ("https://media.readthedocs.org/pdf/image-slicer/latest/image-slicer.pdf")
-import image_slicer
 import os
 from PIL import Image,ImageFile
 import numpy as np
@@ -21,8 +18,8 @@ def make_Tiles(img_path,number_of_tiles,directory):
     img = Image.open(img_path)
     print(img.size)
 
-    # if(hasattr(img,'filename')):
-    #     print(img.filename)
+    if(hasattr(img,'filename')):
+         print(img.filename)
     #     save_as = 'cropped_'+img.filename+'.jpg'
 
     # Get the size of the image
@@ -30,7 +27,6 @@ def make_Tiles(img_path,number_of_tiles,directory):
     points=(0,0,224,224)
     frame = img.crop(points)
     frame.save("chiki.jpg")
-
 
 
 # test if the function works.
