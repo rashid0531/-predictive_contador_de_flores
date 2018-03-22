@@ -15,12 +15,13 @@ def get_files(directory,coordinate_path):
         with open(coordinate_path,'r') as file_obj:
             file_contents = file_obj.read()
 
+
     except FileNotFoundError:
         msg = coordinate_path + " does not exist."
         print(msg)
         prompt = input("Want to create the co-ordinate file [y/n]? \n")
 
-        # After creating the file I want to populate it with the camera days. So that it becomes easier for me to manually keep record of coordinates for each camera.
+        # After creating the file I want to populate it with the camera ids. So that it becomes easier for me to manually keep record of coordinates for each camera.
         # This part of code automates boring stuffs.
 
         if (prompt == 'y' or "yes"):

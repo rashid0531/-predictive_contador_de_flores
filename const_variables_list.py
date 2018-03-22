@@ -1,0 +1,1 @@
+alexnet_individual_image_size = (224,224)
