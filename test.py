@@ -11,4 +11,11 @@
 #
 # print(one_hot)
 #
-
+# import numpy as np
+# import skimage.io as io
+# from io import BytesIO
+#
+# def read_images(image_rawdata):
+#     return image_rawdata[0], np.array(io.imread(BytesIO(image_rawdata[1])))
+#
+# print(read_images("frame000001.jpg"))

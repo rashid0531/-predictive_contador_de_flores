@@ -8,6 +8,7 @@ def get_files(directory,coordinate_path):
     for filename in glob.glob(directory+"/*"):
         cameraid_capturing_days.append(filename.split("/")[-1])
 
+    # cameraid_capturing_days = cameraid_capturing_days.sort()
     print(len(cameraid_capturing_days))
 
     # Check if the file exists, if not then create a new file.
@@ -26,7 +27,7 @@ def get_files(directory,coordinate_path):
 
         if (prompt == 'y' or "yes"):
             with open(coordinate_path,'w') as file_obj:
-                for i in cameraid_capturing_days:
+                for i in sorted(cameraid_capturing_days):
                     file_obj.write(i+" : "+"\n")
 
 
