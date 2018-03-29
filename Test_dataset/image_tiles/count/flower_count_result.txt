@@ -1,0 +1,15 @@
+../../Test_dataset/image_tiles/1109-0710-frame000301_1_4_.jpg		109
+../../Test_dataset/image_tiles/1109-0710-frame000301_0_4_.jpg		155
+../../Test_dataset/image_tiles/1109-0710-frame000301_0_0_.jpg		173
+../../Test_dataset/image_tiles/1109-0710-frame000301_2_0_.jpg		130
+../../Test_dataset/image_tiles/1109-0710-frame000301_2_3_.jpg		68
+../../Test_dataset/image_tiles/1109-0710-frame000301_2_2_.jpg		70
+../../Test_dataset/image_tiles/1109-0710-frame000301_1_1_.jpg		125
+../../Test_dataset/image_tiles/1109-0710-frame000301_1_2_.jpg		111
+../../Test_dataset/image_tiles/1109-0710-frame000301_0_3_.jpg		132
+../../Test_dataset/image_tiles/1109-0710-frame000301_0_1_.jpg		189
+../../Test_dataset/image_tiles/1109-0710-frame000301_0_2_.jpg		170
+../../Test_dataset/image_tiles/1109-0710-frame000301_1_0_.jpg		182
+../../Test_dataset/image_tiles/1109-0710-frame000301_2_4_.jpg		63
+../../Test_dataset/image_tiles/1109-0710-frame000301_2_1_.jpg		103
+../../Test_dataset/image_tiles/1109-0710-frame000301_1_3_.jpg		120

@@ -67,5 +67,6 @@ def make_tiles_given_coordiantes(coordinates,input_path,output_directory):
 
 if __name__== "__main__":
 
-    coor = (140,490)
-    make_tiles_given_coordiantes(coor,"../Preprocess_data/1120_frame000001.jpg","../image_tiles")
+
+    coor = (10,700)
+    make_tiles_given_coordiantes(coor,"../Test_dataset/1109-0710-frame000301.jpg","../Test_dataset/image_tiles")
