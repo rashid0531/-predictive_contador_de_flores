@@ -10,6 +10,7 @@ from PIL import Image,ImageFile
 import os
 import const_variables_list as CONST
 
+from PIL import Image,ImageFile
 ImageFile.LOAD_TRUNCATED_IMAGES = True
 
 def make_tiles_given_coordiantes(coordinates,input_path,output_directory):
@@ -69,4 +70,4 @@ if __name__== "__main__":
 
 
     coor = (10,700)
-    make_tiles_given_coordiantes(coor,"../Test_dataset/1109-0710-frame000301.jpg","../Test_dataset/image_tiles")
+    make_tiles_given_coordiantes(coor,"../Test_dataset/1109-0707-frame000331.jpg","../Test_dataset/image_tiles/1109_0707/")

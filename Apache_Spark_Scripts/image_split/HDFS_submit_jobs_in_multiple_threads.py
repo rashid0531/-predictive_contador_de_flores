@@ -160,6 +160,7 @@ if __name__== "__main__":
         t = threading.Thread(target=run_jobs_in_parallel, args=(full_images_input_path, full_images_output_path, coor, sc))
         all_threads.append(t)
 
+
         t.start()
 
         print("--------------------------")

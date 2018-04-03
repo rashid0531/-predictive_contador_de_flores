@@ -530,14 +530,7 @@ class BlobDetection(Transformation2D):
 class ImageClassifier:
     def classify(self, canolaTimelapseImages):
 
-        # Changed by Rashid.
-
-        # kmeans = KMeans()
-        # histogramManager = HistogramManager()
-        # corruptedImagesDetector = CorruptedImagesDetector()
-        # histogramManager.runImages(canolaTimelapseImages)
-        # corruptedImagesDetector.flagCorruptedImages(canolaTimelapseImages)
-        # kmeans.clusterImages(canolaTimelapseImages)
+        # Changed by Rashid. Skipped kmeans clustering amd corrupt file detection.
 
         # kmeans = KMeans()
         histogramManager = HistogramManager()
@@ -936,6 +929,9 @@ if __name__ == "__main__":
     imageClassifier = ImageClassifier()
     flowerCountImageProcessor = FlowerCountImageProcessor()
 
+
+    # The following commented out lines skips classification stages.
+
     # imageClassifier.classify(canolaTimelapseImages)
     # imagesOnClusterZero = [img for img in canolaTimelapseImages if img.getClassifierObject().getCluster() == 0]
     # sortedByYellowPixels = sorted(imagesOnClusterZero, key=lambda x: x.getClassifierObject().getNumberOfYellowPixels())
@@ -957,8 +953,6 @@ if __name__ == "__main__":
             img_flower_count = len(i.getFlowerCountObject().getBlobs())
 
             file_obj.write(str(img_path) + "\t\t" + str(img_flower_count) + "\n")
-
-
 
     application_end_time = time() - application_start_time
 
