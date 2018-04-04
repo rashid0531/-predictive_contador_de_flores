@@ -69,9 +69,10 @@ def read_image_using_PIL(img_label_pair):
 def _parse_function(filename, label):
 
   image_string = tf.read_file(filename)
+
   image_decoded = tf.image.decode_image(image_string)
-  image_resized = tf.image.resize_images(image_decoded, [224, 224])
-  return image_resized, int(label)
+  # image_resized = tf.image.resize_images(image_decoded, [224, 224])
+  return image_decoded, label
 
 
 if __name__ == "__main__":
