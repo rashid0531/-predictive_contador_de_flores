@@ -50,15 +50,21 @@ conv4 = tf.layers.conv2d(conv3, filters=384, kernel_size=3, strides=[1,1], paddi
 # Fifth convulational layer
 conv5 = tf.layers.conv2d(conv4, filters=256, kernel_size=3, strides=[1,1], padding="SAME",activation=tf.nn.relu)
 
+# Max pool layer - 3rd
+max_pool3 = tf.nn.max_pool(conv5,ksize=[1,3,3,1],strides=[1,2,2,1],padding="VALID")
 
-n_hidden1 = 4096
-n_hidden2 = 4096
 
-# Fully connected densed layer - 1st
-fc1 = tf.layers.dense(conv5, n_hidden1, name = "fc1",activation=tf.nn.relu)
+# need to make those tensor a batch of 1D tensor.
+flattened = tf.reshape(max_pool3, [-1, 6 * 6 * 256])
 
-# Fully connected densed layer - 2nd
-fc2 = tf.layers.dense(fc1, n_hidden2, name = "fc2",activation=tf.nn.relu)
+# n_hidden1 = 4096
+# n_hidden2 = 4096
+#
+# # Fully connected densed layer - 1st
+# fc1 = tf.layers.dense(conv5, n_hidden1, name = "fc1",activation=tf.nn.relu)
+#
+# # Fully connected densed layer - 2nd
+# fc2 = tf.layers.dense(fc1, n_hidden2, name = "fc2",activation=tf.nn.relu)
 
 
 
@@ -69,8 +75,8 @@ with tf.Session() as sess:
     sess.run(init_op)
     elem = sess.run([images, labels])
 
-    output = sess.run(fc2,feed_dict={X:elem[0]})
+    output = sess.run(max_pool3,feed_dict={X:elem[0]})
 
 print(output.shape)
-plt.imshow(output[0,:,:,1])
+plt.imshow(output[0,:,:,0])
 plt.show()
