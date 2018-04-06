@@ -78,6 +78,6 @@ def _parse_function(filename, label):
 if __name__ == "__main__":
 
     input_path = "/u1/rashid/FlowerCounter_Dataset_labels/1109-0710/part-00000"
-    key_value = process_label_files(input_path)
+    key,val = process_label_files(input_path)
 
-    print(key_value[0])
+    print(sorted(val)[-1])

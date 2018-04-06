@@ -18,6 +18,6 @@ next_element = iterator.get_next()
 
 with tf.Session() as sess:
     elem = sess.run(next_element)
-    print(elem)
+    print(elem[1])
     elem = sess.run(next_element)
-    print(elem)
+    print(elem[1])
