@@ -1,6 +1,7 @@
 import numpy as np
 from PIL import Image,ImageFile
 import tensorflow as tf
+import random
 
 def process_label_files(label_file):
     """
@@ -16,9 +17,9 @@ def process_label_files(label_file):
 
     # For local repository add the following prefix.
 
-    # input_prefix = "/u1/rashid/FlowerCounter_Dataset/"
+    input_prefix = "/u1/rashid/FlowerCounter_Dataset/"
 
-    input_prefix = "/home/rashid/Projects/FlowerCounter/dataset/"
+    # input_prefix = "/home/rashid/Projects/FlowerCounter/dataset/"
 
     '''
     Each line in the text file is saved as " u'hdfs://discus-p2irc-master:54310/user/hduser/rashid/output/1109-0710/frame001117_0_3.jpg' "
@@ -28,6 +29,9 @@ def process_label_files(label_file):
         with open(label_file,'r') as file_obj:
 
             file_contents = file_obj.readlines()
+            # Randomized lines inside file.
+            random.shuffle(file_contents)
+
             for each_line in file_contents:
 
                 # stripping the new lines ('\n') from each line
@@ -84,10 +88,12 @@ if __name__ == "__main__":
 
     key,val = process_label_files(input_path)
 
-    print(sorted(val)[-1])
+    print(key[-1],val[-1])
 
-    input_path_local = "/home/rashid/Projects/FlowerCounter/label/part-00000"
-    img,labels = process_label_files(input_path_local)
+    # print(sorted(val)[-1])
 
-    print(img[0])
+    # input_path_local = "/home/rashid/Projects/FlowerCounter/label/part-00000"
+    # img,labels = process_label_files(input_path_local)
+
+    # print(img[0])
 

@@ -8,7 +8,6 @@ import create_TFRecord
 from PIL import Image
 from datetime import datetime
 import os
-
 import input
 import create_TFRecord
 import CNN_models.Alexnet.alexnet as cnnmodel
