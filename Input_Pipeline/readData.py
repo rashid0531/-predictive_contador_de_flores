@@ -1,6 +1,7 @@
 import numpy as np
 from PIL import Image,ImageFile
 import tensorflow as tf
+import random
 
 def process_label_files(label_file):
     """
@@ -28,6 +29,9 @@ def process_label_files(label_file):
         with open(label_file,'r') as file_obj:
 
             file_contents = file_obj.readlines()
+            # Randomized lines inside file.
+            # random.shuffle(file_contents)
+
             for each_line in file_contents:
 
                 # stripping the new lines ('\n') from each line
@@ -82,7 +86,14 @@ if __name__ == "__main__":
 
     input_path = "/u1/rashid/FlowerCounter_Dataset_labels/1109-0710/part-00000"
 
-    input_path_local = "/home/rashid/Projects/FlowerCounter/label/part-00000"
-    img,labels = process_label_files(input_path_local)
+    key,val = process_label_files(input_path)
 
-    print(img[0])
+    print(key[-1],val[-1])
+
+    # print(sorted(val)[-1])
+
+    # input_path_local = "/home/rashid/Projects/FlowerCounter/label/part-00000"
+    # img,labels = process_label_files(input_path_local)
+
+    # print(img[0])
+
