@@ -2,9 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="63edb0c6-feb5-4790-95fa-86231fb09ffd" name="Default" comment="">
+
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Input_Pipeline/readData.py" afterPath="$PROJECT_DIR$/Input_Pipeline/readData.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/Input_Pipeline/test.py" afterPath="$PROJECT_DIR$/Input_Pipeline/test.py" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/Input_Pipeline/test.py" afterPath="$PROJECT_DIR$/Input_Pipeline/test.py" />
+
     </list>
     <ignored path="predictive_flower_counter.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -26,8 +30,13 @@
       <file leaf-file-name="readData.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Input_Pipeline/readData.py">
           <provider selected="true" editor-type-id="text-editor">
+
             <state relative-caret-position="459">
               <caret line="81" column="0" lean-forward="true" selection-start-line="81" selection-start-column="0" selection-end-line="81" selection-end-column="0" />
+
+            <state relative-caret-position="312">
+              <caret line="78" column="0" lean-forward="true" selection-start-line="78" selection-start-column="0" selection-end-line="78" selection-end-column="0" />
+
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -38,11 +47,58 @@
       <file leaf-file-name="test.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Input_Pipeline/test.py">
           <provider selected="true" editor-type-id="text-editor">
+
             <state relative-caret-position="396">
               <caret line="22" column="18" lean-forward="false" selection-start-line="22" selection-start-column="18" selection-end-line="22" selection-end-column="18" />
+
+            <state relative-caret-position="294">
+              <caret line="57" column="52" lean-forward="true" selection-start-line="57" selection-start-column="52" selection-end-line="57" selection-end-column="52" />
+
               <folding>
                 <element signature="e#0#23#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="main.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/main.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1090">
+              <caret line="182" column="75" lean-forward="true" selection-start-line="182" selection-start-column="75" selection-end-line="182" selection-end-column="75" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="input.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/input.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="247">
+              <caret line="70" column="7" lean-forward="true" selection-start-line="70" selection-start-column="6" selection-end-line="71" selection-end-column="16" />
+              <folding>
+                <element signature="e#329#352#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="alexnet.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/CNN_models/Alexnet/alexnet.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="324">
+              <caret line="58" column="9" lean-forward="true" selection-start-line="58" selection-start-column="8" selection-end-line="58" selection-end-column="56" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="finetune.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/CNN_models/Alexnet/finetune.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="332">
+              <caret line="70" column="36" lean-forward="true" selection-start-line="70" selection-start-column="36" selection-end-line="70" selection-end-column="36" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -83,6 +139,7 @@
       <find>n_clusters</find>
       <find>__kmeans</find>
       <find>histogramManager</find>
+      <find>alex</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -112,7 +169,6 @@
         <option value="$PROJECT_DIR$/Apache_Spark_Scripts/sequential_split.py" />
         <option value="$PROJECT_DIR$/Apache_Spark_Scripts/HDFS_submit_jobs_in_multiple_threads.py" />
         <option value="$PROJECT_DIR$/test.py" />
-        <option value="$PROJECT_DIR$/CNN_models/Custom_models/prototype1.py" />
         <option value="$PROJECT_DIR$/Apache_Spark_Scripts/Flower_Counter/ImageFlowerCounterSequential.py" />
         <option value="$PROJECT_DIR$/Test_dataset/image_tiles/count/flower_count_result.txt" />
         <option value="$PROJECT_DIR$/Apache_Spark_Scripts/Flower_Counter/test_ifc.py" />
@@ -127,6 +183,11 @@
         <option value="$PROJECT_DIR$/Input_Pipeline/convert_to_TFRecord.py" />
         <option value="$PROJECT_DIR$/Input_Pipeline/createDataset.py" />
         <option value="$PROJECT_DIR$/Preprocess_data/rename.py" />
+
+
+        <option value="$PROJECT_DIR$/CNN_models/Custom_models/prototype1.py" />
+        <option value="$PROJECT_DIR$/Input_Pipeline/readData.py" />
+
         <option value="$PROJECT_DIR$/Input_Pipeline/test.py" />
         <option value="$PROJECT_DIR$/Input_Pipeline/readData.py" />
       </list>
@@ -160,28 +221,19 @@
         <subPane>
           <expand>
             <path>
-              <item name="predictive_flower_counter" type="b2602c69:ProjectViewProjectNode" />
-              <item name="predictive_flower_counter" type="462c0819:PsiDirectoryNode" />
+              <item name="predictive_contador_de_flores" type="b2602c69:ProjectViewProjectNode" />
+              <item name="predictive_contador_de_flores" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="predictive_flower_counter" type="b2602c69:ProjectViewProjectNode" />
-              <item name="predictive_flower_counter" type="462c0819:PsiDirectoryNode" />
-              <item name="Apache_Spark_Scripts" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="predictive_flower_counter" type="b2602c69:ProjectViewProjectNode" />
-              <item name="predictive_flower_counter" type="462c0819:PsiDirectoryNode" />
+              <item name="predictive_contador_de_flores" type="b2602c69:ProjectViewProjectNode" />
+              <item name="predictive_contador_de_flores" type="462c0819:PsiDirectoryNode" />
               <item name="CNN_models" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
-              <item name="predictive_flower_counter" type="b2602c69:ProjectViewProjectNode" />
-              <item name="predictive_flower_counter" type="462c0819:PsiDirectoryNode" />
-              <item name="Input_Pipeline" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="predictive_flower_counter" type="b2602c69:ProjectViewProjectNode" />
-              <item name="predictive_flower_counter" type="462c0819:PsiDirectoryNode" />
-              <item name="Preprocess_data" type="462c0819:PsiDirectoryNode" />
+              <item name="predictive_contador_de_flores" type="b2602c69:ProjectViewProjectNode" />
+              <item name="predictive_contador_de_flores" type="462c0819:PsiDirectoryNode" />
+              <item name="CNN_models" type="462c0819:PsiDirectoryNode" />
+              <item name="Alexnet" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -239,6 +291,7 @@
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
     </configuration>
     <configuration name="create_tiles_skipping_crop" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -256,6 +309,7 @@
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
     </configuration>
     <configuration name="rename" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -273,6 +327,7 @@
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
     </configuration>
     <configuration name="test (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -290,6 +345,7 @@
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
     </configuration>
     <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -307,6 +363,7 @@
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
     </configuration>
     <list size="5">
       <item index="0" class="java.lang.String" itemvalue="Python.create_tiles_skipping_crop" />
@@ -359,6 +416,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
+
     <frame x="57" y="34" width="1873" height="1092" extended-state="6" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.1528767" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -369,9 +427,21 @@
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32984293" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31765935" sideWeight="0.49807376" order="7" side_tool="false" content_ui="tabs" />
+=======
+    <frame x="49" y="-4" width="1871" height="1084" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.14935064" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32984293" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3183246" sideWeight="0.50192624" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32948583" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3277487" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32984293" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31794333" sideWeight="0.49807376" order="7" side_tool="false" content_ui="tabs" />
+
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -379,6 +449,7 @@
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33612564" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -435,6 +506,7 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
+
     <entry file="file://$PROJECT_DIR$/Apache_Spark_Scripts/sequential_split.py" />
     <entry file="file://$PROJECT_DIR$/Apache_Spark_Scripts/test_parallelize_slicing_images_spark.py" />
     <entry file="file://$PROJECT_DIR$/Apache_Spark_Scripts/parallelize_slicing_images_spark_HDFS.py" />
@@ -453,6 +525,7 @@
         </state>
       </provider>
     </entry>
+
     <entry file="file://$PROJECT_DIR$/Preprocess_data/frame000003.jpg" />
     <entry file="file://$PROJECT_DIR$/Preprocess_data/dhiki.jpg" />
     <entry file="file://$PROJECT_DIR$/Test_dataset/frame000001.jpg" />
@@ -471,27 +544,39 @@
     <entry file="file://$PROJECT_DIR$/Test_dataset/image_tiles/1109_0710/1109-0710-frame000301_2_4_.jpg" />
     <entry file="file://$PROJECT_DIR$/Test_dataset/image_tiles/1109_0710/1109-0710-frame000301_0_0_.jpg" />
     <entry file="file://$PROJECT_DIR$/Apache_Spark_Scripts/Flower_Counter/ImageFlowerCounterDistributed.py" />
-    <entry file="file://$PROJECT_DIR$/Apache_Spark_Scripts/Flower_Counter/FlowerCounter_Sequential.py">
+    <entry file="file://$PROJECT_DIR$/Apache_Spark_Scripts/Flower_Counter/FlowerCounter_Sequential.py" />
+    <entry file="file://$PROJECT_DIR$/Apache_Spark_Scripts/Flower_Counter/canola_timelapse_image.py" />
+    <entry file="file://$PROJECT_DIR$/Apache_Spark_Scripts/Flower_Counter/modified_flower_counter.py" />
+    <entry file="file://$PROJECT_DIR$/Test_dataset/image_tiles/1109_0707/1109-0707-frame000331_2_2_.jpg" />
+    <entry file="file://$PROJECT_DIR$/Test_dataset/image_tiles/1109_0707/1109-0707-frame000331_2_3_.jpg" />
+    <entry file="file://$PROJECT_DIR$/Test_dataset/output/count/1109_0707/part-00000" />
+    <entry file="file://$PROJECT_DIR$/Test_dataset/output/count/1109_0710/part-00000" />
+    <entry file="file://$PROJECT_DIR$/Apache_Spark_Scripts/Flower_Counter/run_job.sh" />
+    <entry file="file://$PROJECT_DIR$/Apache_Spark_Scripts/Flower_Counter/FlowerCounter_Distributed.py" />
+    <entry file="file://$PROJECT_DIR$/Input_Pipeline/slicer.py" />
+    <entry file="file://$PROJECT_DIR$/const_variables_list.py" />
+    <entry file="file://$PROJECT_DIR$/Apache_Spark_Scripts/image_split/HDFS_submit_jobs_in_multiple_threads.py" />
+    <entry file="file://$PROJECT_DIR$/Input_Pipeline/createDataset.py" />
+    <entry file="file://$PROJECT_DIR$/Preprocess_data/rename.py" />
+    <entry file="file://$PROJECT_DIR$/Preprocess_data/another_slicer.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4752">
-          <caret line="25" column="46" lean-forward="false" selection-start-line="25" selection-start-column="46" selection-end-line="25" selection-end-column="46" />
+        <state relative-caret-position="324">
+          <caret line="18" column="55" lean-forward="false" selection-start-line="18" selection-start-column="46" selection-end-line="18" selection-end-column="55" />
+          <folding>
+            <element signature="e#252#261#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Apache_Spark_Scripts/Flower_Counter/canola_timelapse_image.py">
+    <entry file="file://$PROJECT_DIR$/Preprocess_data/create_tiles_skipping_crop.py" />
+    <entry file="file://$PROJECT_DIR$/Preprocess_data/crop.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="414">
+          <caret line="24" column="0" lean-forward="true" selection-start-line="24" selection-start-column="0" selection-end-line="24" selection-end-column="0" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Apache_Spark_Scripts/Flower_Counter/modified_flower_counter.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="129" column="17" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="190" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
+
     <entry file="file://$PROJECT_DIR$/Test_dataset/image_tiles/1109_0707/1109-0707-frame000331_2_2_.jpg" />
     <entry file="file://$PROJECT_DIR$/Test_dataset/image_tiles/1109_0707/1109-0707-frame000331_2_3_.jpg" />
     <entry file="file://$PROJECT_DIR$/Test_dataset/output/count/1109_0707/part-00000" />
@@ -500,11 +585,34 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
           <caret line="7" column="97" lean-forward="false" selection-start-line="7" selection-start-column="97" selection-end-line="7" selection-end-column="97" />
+
+    <entry file="file://$PROJECT_DIR$/Preprocess_data/filter_images.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="234">
+          <caret line="15" column="33" lean-forward="true" selection-start-line="15" selection-start-column="33" selection-end-line="15" selection-end-column="33" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Apache_Spark_Scripts/Flower_Counter/FlowerCounter_Distributed.py">
+    <entry file="file://$USER_HOME$/.virtualenvs/dnn/lib/python3.5/site-packages/tensorflow/python/ops/image_ops_impl.py" />
+    <entry file="file://$PROJECT_DIR$/Input_Pipeline/convert_to_TFRecord.py" />
+    <entry file="file://$USER_HOME$/Envs/dnn/lib/python3.5/imp.py">
       <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="193">
+          <caret line="328" column="18" lean-forward="true" selection-start-line="328" selection-start-column="18" selection-end-line="328" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Envs/dnn/lib/python3.5/site-packages/tensorflow/python/pywrap_tensorflow.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="546">
+          <caret line="57" column="0" lean-forward="false" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
+
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Envs/dnn/lib/python3.5/site-packages/tensorflow/python/pywrap_tensorflow_internal.py">
+      <provider selected="true" editor-type-id="text-editor">
+
         <state relative-caret-position="2952">
           <caret line="188" column="51" lean-forward="false" selection-start-line="188" selection-start-column="51" selection-end-line="188" selection-end-column="51" />
         </state>
@@ -533,25 +641,64 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/input.py">
+
+        <state relative-caret-position="18">
+          <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/CNN_models/Custom_models/prototype1.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="877">
-          <caret line="70" column="7" lean-forward="true" selection-start-line="70" selection-start-column="6" selection-end-line="71" selection-end-column="16" />
+        <state relative-caret-position="18">
+          <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/lib/python3.5/tkinter/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="202">
+          <caret line="35" column="0" lean-forward="false" selection-start-line="35" selection-start-column="0" selection-end-line="35" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Input_Pipeline/readData.py">
+
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="312">
+          <caret line="78" column="0" lean-forward="true" selection-start-line="78" selection-start-column="0" selection-end-line="78" selection-end-column="0" />
           <folding>
-            <element signature="e#329#352#0" expanded="true" />
+            <element signature="e#0#18#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/main.py">
+    <entry file="file://$PROJECT_DIR$/create_TFRecord.py">
       <provider selected="true" editor-type-id="text-editor">
+
         <state relative-caret-position="324">
           <caret line="31" column="37" lean-forward="true" selection-start-line="31" selection-start-column="28" selection-end-line="31" selection-end-column="38" />
+
+        <state relative-caret-position="-396">
+          <caret line="72" column="40" lean-forward="false" selection-start-line="72" selection-start-column="40" selection-end-line="72" selection-end-column="48" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/stash.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/Input_Pipeline/createDataset.py" />
     <entry file="file://$PROJECT_DIR$/CNN_models/Alexnet/finetune.py">
       <provider selected="true" editor-type-id="text-editor">
+
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
         </state>
@@ -598,10 +745,33 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="234">
           <caret line="17" column="32" lean-forward="false" selection-start-line="17" selection-start-column="32" selection-end-line="17" selection-end-column="32" />
+
+        <state relative-caret-position="332">
+          <caret line="70" column="36" lean-forward="true" selection-start-line="70" selection-start-column="36" selection-end-line="70" selection-end-column="36" />
           <folding />
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/input.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="70" column="7" lean-forward="true" selection-start-line="70" selection-start-column="6" selection-end-line="71" selection-end-column="16" />
+          <folding>
+            <element signature="e#329#352#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/main.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1090">
+          <caret line="182" column="75" lean-forward="true" selection-start-line="182" selection-start-column="75" selection-end-line="182" selection-end-column="75" />
+
+          <folding />
+        </state>
+      </provider>
+    </entry>
+
     <entry file="file://$PROJECT_DIR$/Preprocess_data/another_slicer.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="324">
@@ -634,6 +804,20 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="459">
           <caret line="81" column="0" lean-forward="true" selection-start-line="81" selection-start-column="0" selection-end-line="81" selection-end-column="0" />
+
+    <entry file="file://$PROJECT_DIR$/CNN_models/Alexnet/alexnet.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="324">
+          <caret line="58" column="9" lean-forward="true" selection-start-line="58" selection-start-column="8" selection-end-line="58" selection-end-column="56" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Input_Pipeline/test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="57" column="52" lean-forward="true" selection-start-line="57" selection-start-column="52" selection-end-line="57" selection-end-column="52" />
+
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>

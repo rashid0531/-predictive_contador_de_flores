@@ -15,7 +15,10 @@ def process_label_files(label_file):
     labels = []
 
     # For local repository add the following prefix.
-    input_prefix = "/u1/rashid/FlowerCounter_Dataset/"
+
+    # input_prefix = "/u1/rashid/FlowerCounter_Dataset/"
+
+    input_prefix = "/home/rashid/Projects/FlowerCounter/dataset/"
 
     '''
     Each line in the text file is saved as " u'hdfs://discus-p2irc-master:54310/user/hduser/rashid/output/1109-0710/frame001117_0_3.jpg' "
@@ -44,7 +47,6 @@ def process_label_files(label_file):
 
                 # paired_img_label.append((image_path,label))
 
-
     except FileNotFoundError:
         msg = label_file + " does not exist."
         print(msg)
@@ -70,14 +72,22 @@ def _parse_function(filename, label):
 
   image_string = tf.read_file(filename)
 
-  image_decoded = tf.image.decode_image(image_string)
-  # image_resized = tf.image.resize_images(image_decoded, [224, 224])
-  return image_decoded, label
+  image_decoded = tf.image.decode_jpeg(image_string,channels=3)
+  image_resized = tf.image.resize_images(image_decoded, [224, 224])
+  image = tf.cast(image_resized, tf.float32)
+  return image, label
 
 
 if __name__ == "__main__":
 
     input_path = "/u1/rashid/FlowerCounter_Dataset_labels/1109-0710/part-00000"
+
     key,val = process_label_files(input_path)
 
     print(sorted(val)[-1])
+
+    input_path_local = "/home/rashid/Projects/FlowerCounter/label/part-00000"
+    img,labels = process_label_files(input_path_local)
+
+    print(img[0])
+
