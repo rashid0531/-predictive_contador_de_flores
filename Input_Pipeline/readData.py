@@ -2,6 +2,7 @@ import numpy as np
 from PIL import Image,ImageFile
 import tensorflow as tf
 import random
+import Data_Visualization.statistical_summary as stats
 
 def process_label_files(label_file):
     """
@@ -84,16 +85,11 @@ def _parse_function(filename, label):
 
 if __name__ == "__main__":
 
-    input_path = "/u1/rashid/FlowerCounter_Dataset_labels/1109-0710/part-00000"
-
-    key,val = process_label_files(input_path)
-
-    print(key[-1],val[-1])
-
-    # print(sorted(val)[-1])
+    input_path_local = "/u1/rashid/FlowerCounter_Dataset_labels/1109-0710/part-00000"
 
     # input_path_local = "/home/rashid/Projects/FlowerCounter/label/part-00000"
-    # img,labels = process_label_files(input_path_local)
+    img,labels = process_label_files(input_path_local)
 
-    # print(img[0])
+    stats.make_histogram(labels,200)
+    stats.make_cdf(labels,200)
 
