@@ -6,9 +6,9 @@ import Input_Pipeline.readData as read
 #import readData as read
 
 
-label_input_path = "/home/rashid/Projects/FlowerCounter/label/part-00000"
+# label_input_path = "/home/rashid/Projects/FlowerCounter/label/part-00000"
 
-# label_input_path = "/u1/rashid/FlowerCounter_Dataset_labels/1109-0710/part-00000"
+label_input_path = "/u1/rashid/FlowerCounter_Dataset_labels/1109-0710/part-00000"
 
 learning_rate = 0.001
 batch_size = 10
@@ -33,7 +33,7 @@ images_labels_train = tf.constant(labels_train)
 
 
 dataset_train = tf.data.Dataset.from_tensor_slices((images_input_train, images_labels_train))
-Batched_dataset_train = dataset_train.map(read._parse_function).batch(batch_size=batch_size).repeat()
+Batched_dataset_train = dataset_train.map(read._parse_function).shuffle(1000).batch(batch_size=batch_size).repeat()
 
 # Iterator for train dataset.
 iterator_train = Batched_dataset_train.make_one_shot_iterator()
