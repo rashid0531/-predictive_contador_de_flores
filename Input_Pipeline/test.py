@@ -2,11 +2,14 @@ import tensorflow as tf
 import glob
 from matplotlib import pyplot as plt
 import numpy as np
+from datetime import datetime
+
 import Input_Pipeline.readData as read
 #import readData as read
 
 
 label_input_path = "/home/rashid/Projects/FlowerCounter/label/part-00000"
+root_log_dir_for_tflog = "tf_logs"
 
 # label_input_path = "/u1/rashid/FlowerCounter_Dataset_labels/1109-0710/part-00000"
 
@@ -33,7 +36,7 @@ images_labels_train = tf.constant(labels_train)
 
 
 dataset_train = tf.data.Dataset.from_tensor_slices((images_input_train, images_labels_train))
-Batched_dataset_train = dataset_train.map(read._parse_function).batch(batch_size=batch_size).repeat()
+Batched_dataset_train = dataset_train.shuffle(buffer_size=12000).map(read._parse_function).batch(batch_size=batch_size).repeat()
 
 # Iterator for train dataset.
 iterator_train = Batched_dataset_train.make_one_shot_iterator()
@@ -45,7 +48,7 @@ images_input_test = tf.constant(images_test)
 images_labels_test = tf.constant(labels_test)
 
 dataset_test = tf.data.Dataset.from_tensor_slices((images_input_test, images_labels_test))
-Batched_dataset_test = dataset_test.map(read._parse_function)
+Batched_dataset_test = dataset_test.shuffle(buffer_size=4000).map(read._parse_function).batch(batch_size=batch_size).repeat()
 
 # Iterator for test dataset.
 iterator_test = Batched_dataset_test.make_one_shot_iterator()
@@ -111,7 +114,7 @@ fc1 = tf.layers.dense(flattened, n_hidden1, name = "fc1", activation=tf.nn.relu,
 dropout1 = tf.nn.dropout(fc1, keep_prob)
 
 # Fully connected densed layer - 2nd
-fc2 = tf.layers.dense(dropout1, n_hidden2, name = "fc2",activation=tf.nn.relu)
+fc2 = tf.layers.dense(dropout1, n_hidden2, name = "fc2",activation=tf.nn.relu, use_bias= True)
 
 # Drop out for 2nd fc layer
 dropout2 = tf.nn.dropout(fc2, keep_prob)
@@ -130,6 +133,14 @@ with tf.name_scope("loss"):
     optimizer = tf.train.AdamOptimizer(learning_rate=learning_rate)
     train_op = optimizer.minimize(cost)
 
+
+# tf log initialization.
+currenttime = datetime.utcnow().strftime("%Y%m%d%H%M%S")
+logdir = "{}/run-{}/".format(root_log_dir_for_tflog,currenttime)
+
+# summary writter.
+cost_summary = tf.summary.scalar("Cost", cost)
+file_writer = tf.summary.FileWriter(logdir,tf.get_default_graph())
 #
 # # Evaluate model
 # correct_pred = tf.equal(tf.argmax(prediction, 1), tf.argmax(Y, 1))
@@ -137,7 +148,7 @@ with tf.name_scope("loss"):
 
 
 num_steps = len(images_train)//batch_size
-display_step = 100
+display_step = 200
 
 init_op = tf.global_variables_initializer()
 
@@ -147,7 +158,7 @@ with tf.Session() as sess:
     epoch = 0
 
     # losses = []
-    while (epoch < 2):
+    while (epoch < 5):
 
         for step in range(1, num_steps + 1):
 
@@ -162,21 +173,47 @@ with tf.Session() as sess:
             # losses.append(loss)
             if step % display_step == 0:
 
-                pred = sess.run(fc3, feed_dict={X: elem[0],
-                                                keep_prob: 0.5,
-                                                Y: original_labels})
+                test_elem = sess.run([test_images, test_labels])
 
-                plt.plot(original_labels)
-                plt.plot(pred)
-                plt.show()
+                original_labels_test = np.reshape(test_elem[1], (-1, 1))
+
+                test_cost_sum = sess.run(cost_summary, feed_dict={X: test_elem[0],
+                                                                  keep_prob: 1,
+                                                                  Y: original_labels_test})
+
+                file_writer.add_summary(test_cost_sum, epoch)
+
+
+
+                # pred,cost_sum = sess.run([fc3,cost_summary], feed_dict={X: elem[0],
+                #                                 keep_prob: 0.5,
+                #                                 Y: original_labels})
+                #
+                # file_writer.add_summary(cost_sum,step)
+                #
+                # plt.plot(original_labels)
+                # plt.plot(pred)
+                # plt.show()
 
         epoch+=1
+
+        # test_elem = sess.run([test_images,test_labels])
+        #
+        # original_labels_test = np.reshape(test_elem[1], (-1, 1))
+        #
+        # test_cost_sum = sess.run(cost_summary, feed_dict={X: test_elem[0],
+        #                                                           keep_prob: 1,
+        #                                                           Y: original_labels_test})
+        #
+        # file_writer.add_summary(test_cost_sum, epoch)
+
 
     # coordinate_path = "./prediction.txt"
     # with open(coordinate_path, 'w') as file_obj:
     #     for i in losses:
     #         file_obj.write(str(i) + "\n")
 
+file_writer.close()
 
 
 # print(pred)
