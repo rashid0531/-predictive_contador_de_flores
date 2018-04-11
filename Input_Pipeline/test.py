@@ -4,6 +4,9 @@ from matplotlib import pyplot as plt
 import numpy as np
 from datetime import datetime
 
+import Input_Pipeline.prepare_dataset as prepare
+#import prepare_dataset as prepare
+
 import Input_Pipeline.readData as read
 #import readData as read
 
@@ -11,25 +14,15 @@ import Input_Pipeline.readData as read
 # label_input_path = "/home/rashid/Projects/FlowerCounter/label/part-00000"
 root_log_dir_for_tflog = "tf_logs"
 
-
 label_input_path = "/u1/rashid/FlowerCounter_Dataset_labels/1109-0710/part-00000"
 
 learning_rate = 0.001
 batch_size = 10
 
-images,labels = read.process_label_files(label_input_path)
+images_train,labels_train,images_test,labels_test = prepare.get_train_test_sets(label_input_path,train_ratio = 0.7)
 
-# Setting up Training set and Test set.
-trainset_ratio = 0.7
-trainset_limit = int(len(images)*trainset_ratio)
+# print(len(images_train), len(images_test))
 
-# Training set
-images_train = images[0:trainset_limit]
-labels_train = labels[0:trainset_limit]
-
-# Testing set
-images_test = images[trainset_limit:]
-labels_test = labels[trainset_limit:]
 
 # A vector of filenames for trainset.
 images_input_train = tf.constant(images_train)
@@ -143,10 +136,6 @@ logdir = "{}/run-{}/".format(root_log_dir_for_tflog,currenttime)
 # summary writter.
 cost_summary = tf.summary.scalar("Cost", cost)
 file_writer = tf.summary.FileWriter(logdir,tf.get_default_graph())
-#
-# # Evaluate model
-# correct_pred = tf.equal(tf.argmax(prediction, 1), tf.argmax(Y, 1))
-# accuracy = tf.reduce_mean(tf.cast(correct_pred, tf.float32))
 
 
 num_steps = len(images_train)//batch_size
@@ -159,8 +148,7 @@ with tf.Session() as sess:
     sess.run(init_op)
     epoch = 0
 
-    # losses = []
-    while (epoch < 5):
+    while (epoch < 3):
 
         for step in range(1, num_steps + 1):
 
@@ -172,8 +160,9 @@ with tf.Session() as sess:
                                             keep_prob:0.5,
                                             Y:original_labels})
 
-            # losses.append(loss)
             if step % display_step == 0:
+
+                print("Here")
 
                 test_elem = sess.run([test_images, test_labels])
 
@@ -185,40 +174,9 @@ with tf.Session() as sess:
 
                 file_writer.add_summary(test_cost_sum, epoch)
 
-
-
-                # pred,cost_sum = sess.run([fc3,cost_summary], feed_dict={X: elem[0],
-                #                                 keep_prob: 0.5,
-                #                                 Y: original_labels})
-                #
-                # file_writer.add_summary(cost_sum,step)
-                #
-                # plt.plot(original_labels)
-                # plt.plot(pred)
-                # plt.show()
-
         epoch+=1
 
-        # test_elem = sess.run([test_images,test_labels])
-        #
-        # original_labels_test = np.reshape(test_elem[1], (-1, 1))
-        #
-        # test_cost_sum = sess.run(cost_summary, feed_dict={X: test_elem[0],
-        #                                                           keep_prob: 1,
-        #                                                           Y: original_labels_test})
-        #
-        # file_writer.add_summary(test_cost_sum, epoch)
-
-
-    # coordinate_path = "./prediction.txt"
-    # with open(coordinate_path, 'w') as file_obj:
-    #     for i in losses:
-    #         file_obj.write(str(i) + "\n")
 
 file_writer.close()
-
-
-# print(pred)
-# print(original_labels)
 
 

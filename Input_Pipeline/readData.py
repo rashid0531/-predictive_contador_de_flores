@@ -3,6 +3,7 @@ from PIL import Image,ImageFile
 import tensorflow as tf
 import random
 import Data_Visualization.statistical_summary as stats
+import math
 
 def process_label_files(label_file):
     """
@@ -83,6 +84,21 @@ def _parse_function(filename, label):
   return image, label
 
 
+def filter(images,labels):
+
+    range_min,range_max= np.median(labels) - np.std(labels), np.median(labels) + np.std(labels)
+
+    filtered_image=[]
+    filtered_labels= []
+
+    for i in range(len(labels)):
+        if (labels[i] < math.ceil(range_max) and labels[i] > math.floor(range_min)):
+            filtered_image.append(images[i])
+            filtered_labels.append(labels[i])
+
+    return filtered_image,filtered_labels
+
+
 if __name__ == "__main__":
 
     input_path_local = "/u1/rashid/FlowerCounter_Dataset_labels/1109-0710/part-00000"
@@ -90,6 +106,17 @@ if __name__ == "__main__":
     # input_path_local = "/home/rashid/Projects/FlowerCounter/label/part-00000"
     img,labels = process_label_files(input_path_local)
 
-    stats.make_histogram(labels,200)
-    stats.make_cdf(labels,200)
+    filtered_img,filtered_labels = filter(img,labels)
+    stats.make_histogram(filtered_labels,200)
+
+    print(len(filtered_labels))
+    # print(filtered_img[0],filtered_labels[0])
+
+    # input_path_local_1109_0711 = "/u1/rashid/FlowerCounter_Dataset_labels/1109-0711/part-00000"
+    #
+    # img_11,labels_11 = process_label_files(input_path_local_1109_0711)
+    #
+    # stats.make_histogram_twoset(labels,labels_11,5)
+    # stats.make_cdf_twoset(labels,labels_11,200)
+
 
