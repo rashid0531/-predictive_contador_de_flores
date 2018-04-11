@@ -19,9 +19,9 @@ def process_label_files(label_file):
 
     # For local repository add the following prefix.
 
-    input_prefix = "/u1/rashid/FlowerCounter_Dataset/"
+    # input_prefix = "/u1/rashid/FlowerCounter_Dataset/"
 
-    # input_prefix = "/home/rashid/Projects/FlowerCounter/dataset/"
+    input_prefix = "/home/rashid/Projects/FlowerCounter/dataset/"
 
     '''
     Each line in the text file is saved as " u'hdfs://discus-p2irc-master:54310/user/hduser/rashid/output/1109-0710/frame001117_0_3.jpg' "
@@ -101,22 +101,12 @@ def filter(images,labels):
 
 if __name__ == "__main__":
 
-    input_path_local = "/u1/rashid/FlowerCounter_Dataset_labels/1109-0710/part-00000"
+    # input_path_local = "/u1/rashid/FlowerCounter_Dataset_labels/1109-0710/part-00000"
 
-    # input_path_local = "/home/rashid/Projects/FlowerCounter/label/part-00000"
+    input_path_local = "/home/rashid/Projects/FlowerCounter/label/part-00000"
     img,labels = process_label_files(input_path_local)
 
     filtered_img,filtered_labels = filter(img,labels)
     stats.make_histogram(filtered_labels,200)
 
     print(len(filtered_labels))
-    # print(filtered_img[0],filtered_labels[0])
-
-    # input_path_local_1109_0711 = "/u1/rashid/FlowerCounter_Dataset_labels/1109-0711/part-00000"
-    #
-    # img_11,labels_11 = process_label_files(input_path_local_1109_0711)
-    #
-    # stats.make_histogram_twoset(labels,labels_11,5)
-    # stats.make_cdf_twoset(labels,labels_11,200)
-
-

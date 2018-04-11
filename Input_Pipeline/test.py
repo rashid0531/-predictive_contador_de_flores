@@ -11,13 +11,13 @@ import Input_Pipeline.readData as read
 #import readData as read
 
 
-# label_input_path = "/home/rashid/Projects/FlowerCounter/label/part-00000"
+label_input_path = "/home/rashid/Projects/FlowerCounter/label/part-00000"
 root_log_dir_for_tflog = "tf_logs"
 
-label_input_path = "/u1/rashid/FlowerCounter_Dataset_labels/1109-0710/part-00000"
+# label_input_path = "/u1/rashid/FlowerCounter_Dataset_labels/1109-0710/part-00000"
 
-learning_rate = 0.001
-batch_size = 10
+learning_rate = 0.0001
+batch_size = 20
 
 images_train,labels_train,images_test,labels_test = prepare.get_train_test_sets(label_input_path,train_ratio = 0.7)
 
@@ -134,12 +134,22 @@ currenttime = datetime.utcnow().strftime("%Y%m%d%H%M%S")
 logdir = "{}/run-{}/".format(root_log_dir_for_tflog,currenttime)
 
 # summary writter.
-cost_summary = tf.summary.scalar("Cost", cost)
+cost_summary_train = tf.summary.scalar("Training loss", cost)
+
+cost_summary_test = tf.summary.scalar("Testing loss", cost)
+
+
 file_writer = tf.summary.FileWriter(logdir,tf.get_default_graph())
 
 
+# train_writer = tf.train.SummaryWriter(logdir + '/train', tf.get_default_graph())
+# test_writer = tf.train.SummaryWriter(logdir + '/test',tf.get_default_graph())
+
+
 num_steps = len(images_train)//batch_size
-display_step = 200
+display_step = 50
+
+validation_steps = len(images_test)//batch_size
 
 init_op = tf.global_variables_initializer()
 
@@ -148,7 +158,9 @@ with tf.Session() as sess:
     sess.run(init_op)
     epoch = 0
 
-    while (epoch < 3):
+    while (epoch < 35):
+
+        print("{} Epoch number: {}".format(datetime.now(), epoch + 1))
 
         for step in range(1, num_steps + 1):
 
@@ -160,19 +172,30 @@ with tf.Session() as sess:
                                             keep_prob:0.5,
                                             Y:original_labels})
 
-            if step % display_step == 0:
-
-                print("Here")
-
+            if (step % display_step == 0):
+                # Loss per epoch - testset
                 test_elem = sess.run([test_images, test_labels])
 
                 original_labels_test = np.reshape(test_elem[1], (-1, 1))
 
-                test_cost_sum = sess.run(cost_summary, feed_dict={X: test_elem[0],
-                                                                  keep_prob: 1,
-                                                                  Y: original_labels_test})
+                test_cost_sum,test_loss = sess.run([cost_summary_test,cost], feed_dict={X: test_elem[0],
+                                                                       keep_prob: 1,
+                                                                       Y: original_labels_test})
+                print("validation loss: {}".format(test_loss))
 
-                file_writer.add_summary(test_cost_sum, epoch)
+                file_writer.add_summary(test_cost_sum, epoch*num_steps + step)
+
+        # # Loss per epoch - trainset
+        #
+        # train_elem = sess.run([train_images, train_labels])
+        #
+        # original_labels_train = np.reshape(train_elem[1], (-1, 1))
+        #
+        # train_cost_sum = sess.run(cost_summary_train, feed_dict={X: test_elem[0],
+        #                                                   keep_prob: 1,
+        #                                                   Y: original_labels_test})
+        #
+        # file_writer.add_summary(train_cost_sum)
 
         epoch+=1
 
