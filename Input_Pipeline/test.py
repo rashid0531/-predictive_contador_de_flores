@@ -12,7 +12,7 @@ import Input_Pipeline.readData as read
 
 
 label_input_path = "/home/rashid/Projects/FlowerCounter/label/part-00000"
-root_log_dir_for_tflog = "tf_logs"
+root_log_dir_for_tflog = "../../tf_logs"
 
 # label_input_path = "/u1/rashid/FlowerCounter_Dataset_labels/1109-0710/part-00000"
 

@@ -4,6 +4,7 @@ import tensorflow as tf
 import random
 import Data_Visualization.statistical_summary as stats
 import math
+import prepare_dataset as prepare
 
 def process_label_files(label_file):
     """
@@ -57,7 +58,9 @@ def process_label_files(label_file):
         msg = label_file + " does not exist."
         print(msg)
 
+
     return listOf_image_paths,labels
+
 
 
 def read_image_using_PIL(img_label_pair):
@@ -74,14 +77,22 @@ def read_image_using_PIL(img_label_pair):
 
 # This function was taken from Tensorflows documentation.
 # Reads an image from a file, decodes it into a dense tensor, and resizes it to a fixed shape.
-def _parse_function(filename, label):
+def _parse_function(filename, label, onehot = False, number_of_classes = False):
 
   image_string = tf.read_file(filename)
 
   image_decoded = tf.image.decode_jpeg(image_string,channels=3)
   image_resized = tf.image.resize_images(image_decoded, [224, 224])
   image = tf.cast(image_resized, tf.float32)
-  return image, label
+
+  if (onehot == True):
+      # convert the label to one-hot encoding
+      onehot_encoded_label = tf.one_hot(label, number_of_classes)
+
+      return image, onehot_encoded_label
+
+  else:
+        return image, label
 
 
 def filter(images,labels):
@@ -107,6 +118,8 @@ if __name__ == "__main__":
     img,labels = process_label_files(input_path_local)
 
     filtered_img,filtered_labels = filter(img,labels)
-    stats.make_histogram(filtered_labels,200)
+    # stats.make_histogram(filtered_labels,3)
+    # print(len(filtered_img))
 
-    print(len(filtered_labels))
+    binned_labels_filtered = list(map(prepare.get_bin,filtered_labels))
+    print(filtered_img[155],binned_labels_filtered[155])
