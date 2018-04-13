@@ -5,20 +5,19 @@ import numpy as np
 from datetime import datetime
 import const_variables_list
 import sys
-sys.path.append(const_variables_list.path_to_input_pipeline_discus)
+sys.path.append(const_variables_list.path_to_input_pipeline_home)
 
 import prepare_dataset as prepare
 import readData as read
 
-
-# label_input_path = "/home/rashid/Projects/FlowerCounter/label/part-00000"
+label_input_path = "/home/rashid/Projects/FlowerCounter/label/part-00000"
 root_log_dir_for_tflog = "../../tf_logs"
 
-label_input_path = "/u1/rashid/FlowerCounter_Dataset_labels/1109-0710/part-00000"
+# label_input_path = "/u1/rashid/FlowerCounter_Dataset_labels/1109-0710/part-00000"
 
 number_of_classes = 3
-learning_rate = 0.0001
-batch_size = 20
+learning_rate = 0.00001
+batch_size = 50
 
 images_train,labels_train,images_test,labels_test = prepare.get_train_test_sets(label_input_path,train_ratio = 0.7,binning="True")
 
@@ -117,7 +116,7 @@ fc2 = tf.layers.dense(dropout1, n_hidden2, name = "fc2",activation=tf.nn.relu, u
 dropout2 = tf.nn.dropout(fc2, keep_prob)
 
 # Fully connected densed layer - 3rd and final
-prediction = tf.layers.dense(dropout2,last_layer,name = "fc3",activation = None, use_bias= True)
+prediction = tf.layers.dense(dropout2,last_layer,name = "prediction",activation = None, use_bias= True)
 
 # Place Holder for actual labels.
 Y = tf.placeholder(tf.float32, shape= [None,number_of_classes],name = "labels")
@@ -138,9 +137,9 @@ accuracy = tf.reduce_mean(tf.cast(correct_pred, tf.float32))
 currenttime = datetime.utcnow().strftime("%Y%m%d%H%M%S")
 logdir = "{}/run-{}/".format(root_log_dir_for_tflog,currenttime)
 
-# summary writter - Cost.
-cost_summary_train = tf.summary.scalar("Training loss", loss)
-cost_summary_test = tf.summary.scalar("Testing loss", loss)
+# # summary writter - Cost.
+# cost_summary_train = tf.summary.scalar("Training loss", loss)
+# cost_summary_test = tf.summary.scalar("Testing loss", loss)
 
 # summary writter - Accuracy.
 acc_summary_train = tf.summary.scalar("Training accuracy", accuracy)
@@ -161,7 +160,7 @@ with tf.Session() as sess:
     sess.run(init_op)
     epoch = 0
 
-    while (epoch < 7):
+    while (epoch < 50):
 
         print("{} Epoch number: {}".format(datetime.now(), epoch + 1))
 
@@ -172,16 +171,16 @@ with tf.Session() as sess:
             # Allah = sess.run(Y,feed_dict={Y:elem[1]})
             # print(Allah)
 
-            output = sess.run(train_op, feed_dict={X: elem[0],keep_prob: 0.5,Y: elem[1]})
+            output = sess.run(train_op, feed_dict={X: elem[0],keep_prob: 0.4,Y: elem[1]})
 
             if (step % display_step == 0):
 
                 # Collecting Trainset Accuracy.
-                accur, accur_sum_train = sess.run([accuracy,acc_summary_train],feed_dict={X: elem[0],keep_prob: 0.5, Y: elem[1]} )
+                accur, accur_sum_train = sess.run([accuracy,acc_summary_train],feed_dict={X: elem[0],keep_prob: 1, Y: elem[1]} )
 
                 print("training accuracy: {}".format(accur))
 
-                file_writer.add_summary(accur_sum_train, epoch*num_steps + step)
+                # file_writer.add_summary(accur_sum_train, epoch*num_steps + step)
 
 
                 # Collecting Testset Accuracy.
