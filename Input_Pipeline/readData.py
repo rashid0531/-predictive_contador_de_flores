@@ -20,9 +20,9 @@ def process_label_files(label_file):
 
     # For local repository add the following prefix.
 
-    # input_prefix = "/u1/rashid/FlowerCounter_Dataset/"
+    input_prefix = "/u1/rashid/FlowerCounter_Dataset/"
 
-    input_prefix = "/home/rashid/Projects/FlowerCounter/dataset/"
+    # input_prefix = "/home/rashid/Projects/FlowerCounter/dataset/"
 
     '''
     Each line in the text file is saved as " u'hdfs://discus-p2irc-master:54310/user/hduser/rashid/output/1109-0710/frame001117_0_3.jpg' "

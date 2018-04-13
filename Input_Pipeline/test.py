@@ -11,10 +11,10 @@ import Input_Pipeline.readData as read
 #import readData as read
 
 
-label_input_path = "/home/rashid/Projects/FlowerCounter/label/part-00000"
+# label_input_path = "/home/rashid/Projects/FlowerCounter/label/part-00000"
 root_log_dir_for_tflog = "../../tf_logs"
 
-# label_input_path = "/u1/rashid/FlowerCounter_Dataset_labels/1109-0710/part-00000"
+label_input_path = "/u1/rashid/FlowerCounter_Dataset_labels/1109-0710/part-00000"
 
 learning_rate = 0.0001
 batch_size = 20
@@ -22,7 +22,6 @@ batch_size = 20
 images_train,labels_train,images_test,labels_test = prepare.get_train_test_sets(label_input_path,train_ratio = 0.7)
 
 # print(len(images_train), len(images_test))
-
 
 # A vector of filenames for trainset.
 images_input_train = tf.constant(images_train)
@@ -165,6 +164,10 @@ with tf.Session() as sess:
         for step in range(1, num_steps + 1):
 
             elem = sess.run([train_images, train_labels])
+
+            # tele = sess.run(conv3,feed_dict={X:elem[0],
+            #                                 keep_prob:0.5})
+            # print(tele)
 
             original_labels = np.reshape(elem[1], (-1, 1))
 

@@ -115,11 +115,11 @@ with tf.Session() as sess:
         sess.run(train_op, feed_dict={X: batch_x, Y: batch_y, keep_prob: dropout})
         if step % display_step == 0 or step == 1:
             # Calculate batch loss and accuracy
-            loss, acc = sess.run([loss_op, accuracy], feed_dict={X: batch_x,
+            predic, acc = sess.run([logits, accuracy], feed_dict={X: batch_x,
                                                                  Y: batch_y,
                                                                  keep_prob: 1.0})
 
-            print(loss)
+            print(predic)
             # print(batch_y[0])
             # print("Step " + str(step) + ", Minibatch Loss= " + \
             #       "{:.4f}".format(loss) + ", Training Accuracy= " + \
