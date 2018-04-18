@@ -10,11 +10,19 @@ sys.path.append(info.path_to_Data_Visualization_discus)
 # sys.path.append(info.path_to_Data_Visualization_local)
 import statistical_summary as stats
 
-def get_train_test_sets(label_file,train_ratio, binning = False):
+def get_train_test_sets(label_folder,train_ratio, binning = False):
 
-    images, labels=read.process_label_files(label_file)
+    filtered_imgs, filtered_labels = prepare(label_folder=label_folder)
 
-    filtered_imgs, filtered_labels = read.filter(images,labels)
+    #shuffle dataset.
+
+    paired_label_img = list(zip(filtered_labels,filtered_imgs))
+
+    random.shuffle(paired_label_img)
+
+    filtered_labels, filtered_imgs = zip(*paired_label_img)
+
+    # print(filtered_imgs[7777], filtered_labels[7777])
 
     # Setting up Training set and Test set.
     trainset_ratio = train_ratio
@@ -121,29 +129,16 @@ def prepare(label_folder):
         all_image_path.append(img)
         all_labels.append(label)
 
-    return all_image_path, all_labels
+    all_image_path, all_labels = np.array(all_image_path),np.array(all_labels)
 
-if __name__== "__main__":
-
-    default_path = "/u1/rashid/FlowerCounter_Dataset_labels"
-    # default_path = "/home/rashid/Projects/FlowerCounter/label_dataset"
-
-    all_img_path,all_labels = prepare(default_path)
-    all_img_path,all_labels = np.array(all_img_path),np.array(all_labels)
-
-    flatten_img_path = list(itertools.chain.from_iterable(all_img_path))
+    flatten_img_path = list(itertools.chain.from_iterable(all_image_path))
     flatten_labels = list(itertools.chain.from_iterable(all_labels))
 
-    filtered_img,filtered_labels = read.filter(flatten_img_path,flatten_labels)
+    filtered_img, filtered_labels = read.filter(flatten_img_path, flatten_labels)
 
-    paired_label_img = list(zip(filtered_labels,filtered_img))
+    paired_label_img = list(zip(filtered_labels, filtered_img))
     paired_label_img.sort()
-    sorted_label,sorted_img = zip(*paired_label_img)
-    # print(len(sorted_img))
-
-    # stats.CountFrequency(sorted_label)
-
-    # print(sorted_label[45654],sorted_img[45654])
+    sorted_label, sorted_img = zip(*paired_label_img)
 
     number_of_bins = 10
     # stats.make_histogram(sorted(filtered_labels), number_of_bins)
@@ -153,15 +148,9 @@ if __name__== "__main__":
 
     frequency_inside_bins = []
 
-    for i in range(min,max,histogram_interval+1):
-
-        left, right = get_left_right(sorted_label,i,histogram_interval)
-
-        # print(left,right)
-
-        frequency_inside_bins.append(right-left)
-
-    # print(frequency_inside_bins)
+    for i in range(min, max, histogram_interval + 1):
+        left, right = get_left_right(sorted_label, i, histogram_interval)
+        frequency_inside_bins.append(right - left)
 
     frequency_inside_bins = np.array(frequency_inside_bins)
 
@@ -170,38 +159,29 @@ if __name__== "__main__":
     paired_sorted_label_img = list(zip(sorted_label, sorted_img))
 
     sampled_img = []
-    sampled_label =[]
+    sampled_label = []
 
-    for i in range(min,max,histogram_interval+1):
+    for i in range(min, max, histogram_interval + 1):
+        left, right = get_left_right(sorted_label, i, histogram_interval)
 
-        left, right = get_left_right(sorted_label,i,histogram_interval)
-
-        labellist, imglist = zip(*(random.sample(paired_sorted_label_img[left:right],sample_size)))
+        labellist, imglist = zip(*(random.sample(paired_sorted_label_img[left:right], sample_size)))
 
         sampled_label.append(labellist)
         sampled_img.append(imglist)
-    # stats.make_histogram(sorted_label, number_of_bins)
 
     flatten_img_path = list(itertools.chain.from_iterable(sampled_img))
     flatten_labels = list(itertools.chain.from_iterable(sampled_label))
 
-    stats.make_histogram(flatten_labels,number_of_bins)
+    return flatten_img_path,flatten_labels
 
+if __name__== "__main__":
 
+    default_path = "/u1/rashid/FlowerCounter_Dataset_labels"
+    # default_path = "/home/rashid/Projects/FlowerCounter/label_dataset"
 
-    # print(len(filtered_img),len(filtered_labels))
+    images_train, labels_train, images_test, labels_test = get_train_test_sets(default_path,0.7)
 
-    # print(filtered_img[-13],filtered_labels[-13])
+    print(len(images_train),len(images_test),len(labels_train),len(labels_test))
 
-    # paired_img_label = list(zip(filtered_img, filtered_labels))
-    # #
-    # # for i in range (0,5):
-    # #     random.shuffle(paired_img_label)
-    # #
-    # filtered_img_shuffled, filtered_labels_shuffled = zip(*paired_img_label)
-    #
-    # stats.make_histogram(sorted(filtered_labels_shuffled),number_of_bins = 10)
-
-
-
+    print(images_train[11000],labels_train[11000])
 
