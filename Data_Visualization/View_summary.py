@@ -1,8 +1,8 @@
 import glob
 import sys
 import info
-# sys.path.append(info.path_to_input_pipeline_discus)
-sys.path.append(info.path_to_input_pipeline_local)
+sys.path.append(info.path_to_input_pipeline_discus)
+# sys.path.append(info.path_to_input_pipeline_local)
 import readData as read
 import statistical_summary as stats
 import numpy as np

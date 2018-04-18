@@ -6,9 +6,8 @@ import sys
 import itertools
 import random
 import info
-# sys.path.append(info.path_to_Data_Visualization_discus)
-sys.path.append(info.path_to_Data_Visualization_local)
-
+sys.path.append(info.path_to_Data_Visualization_discus)
+# sys.path.append(info.path_to_Data_Visualization_local)
 import statistical_summary as stats
 
 def get_train_test_sets(label_file,train_ratio, binning = False):
@@ -126,8 +125,8 @@ def prepare(label_folder):
 
 if __name__== "__main__":
 
-    # default_path = "/u1/rashid/FlowerCounter_Dataset_labels"
-    default_path = "/home/rashid/Projects/FlowerCounter/label_dataset"
+    default_path = "/u1/rashid/FlowerCounter_Dataset_labels"
+    # default_path = "/home/rashid/Projects/FlowerCounter/label_dataset"
 
     all_img_path,all_labels = prepare(default_path)
     all_img_path,all_labels = np.array(all_img_path),np.array(all_labels)
@@ -140,18 +139,17 @@ if __name__== "__main__":
     paired_label_img = list(zip(filtered_labels,filtered_img))
     paired_label_img.sort()
     sorted_label,sorted_img = zip(*paired_label_img)
-    # print(sorted_img[7000],sorted_label[7000])
+    # print(len(sorted_img))
 
-    stats.CountFrequency(sorted_label)
+    # stats.CountFrequency(sorted_label)
+
+    # print(sorted_label[45654],sorted_img[45654])
 
     number_of_bins = 10
     # stats.make_histogram(sorted(filtered_labels), number_of_bins)
 
-    min, max = sorted(filtered_labels)[0], sorted(filtered_labels)[-1]
+    min, max = sorted_label[0], sorted_label[-1]
     histogram_interval = int((max - min) / number_of_bins)
-
-    print(sorted_label[15439])
-    # print(len(sorted_label))
 
     frequency_inside_bins = []
 
@@ -163,9 +161,33 @@ if __name__== "__main__":
 
         frequency_inside_bins.append(right-left)
 
-    print(frequency_inside_bins)
+    # print(frequency_inside_bins)
 
-    stats.make_histogram(sorted(filtered_labels), number_of_bins)
+    frequency_inside_bins = np.array(frequency_inside_bins)
+
+    sample_size = np.min(frequency_inside_bins)
+
+    paired_sorted_label_img = list(zip(sorted_label, sorted_img))
+
+    sampled_img = []
+    sampled_label =[]
+
+    for i in range(min,max,histogram_interval+1):
+
+        left, right = get_left_right(sorted_label,i,histogram_interval)
+
+        labellist, imglist = zip(*(random.sample(paired_sorted_label_img[left:right],sample_size)))
+
+        sampled_label.append(labellist)
+        sampled_img.append(imglist)
+    # stats.make_histogram(sorted_label, number_of_bins)
+
+    flatten_img_path = list(itertools.chain.from_iterable(sampled_img))
+    flatten_labels = list(itertools.chain.from_iterable(sampled_label))
+
+    stats.make_histogram(flatten_labels,number_of_bins)
+
+
 
     # print(len(filtered_img),len(filtered_labels))
 
