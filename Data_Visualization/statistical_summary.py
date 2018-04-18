@@ -1,7 +1,8 @@
 import numpy as np
 import matplotlib.mlab as mlab
 import matplotlib.pyplot as plt
-
+from random import randint
+import collections
 
 def make_histogram(x,number_of_bins):
 
@@ -36,3 +37,34 @@ def make_cdf_twoset(x,y,number_of_bins):
              color='blue')
 
     plt.show()
+
+def make_histogram_multipledataSet(array_of_dataset, number_of_bin):
+
+    colors = ["red","blue","green","yellow","gray","orange","purple","red","blue","green"]
+
+    for i in range(0,len(array_of_dataset)):
+        plt.hist(array_of_dataset[i], number_of_bin, facecolor=colors[1], alpha=0.5)
+
+    plt.show()
+
+def make_plot(input, semilog_y = False):
+    freq = collections.Counter(input)
+
+    flower_count=[]
+    frequency =[]
+    for key,val in freq.items():
+        flower_count.append(key)
+        frequency.append(val)
+
+    if (semilog_y == True):
+        plt.semilogy(flower_count,frequency)
+
+    else :
+        plt.plot(flower_count,frequency)
+
+    plt.show()
+
+def CountFrequency(arr):
+    freq = collections.Counter(arr)
+    for key, value in freq.items():
+        print(key, " : ", value)

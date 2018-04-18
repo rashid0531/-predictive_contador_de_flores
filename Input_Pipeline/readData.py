@@ -53,15 +53,11 @@ def process_label_files(label_file):
                 labels.append(int(label))
 
                 # paired_img_label.append((image_path,label))
-
     except FileNotFoundError:
         msg = label_file + " does not exist."
         print(msg)
 
-
-    return listOf_image_paths,labels
-
-
+    return listOf_image_paths, labels
 
 def read_image_using_PIL(img_label_pair):
 
@@ -99,6 +95,8 @@ def filter(images,labels):
 
     range_min,range_max= np.median(labels) - np.std(labels), np.median(labels) + np.std(labels)
 
+    range_max += 29
+
     filtered_image=[]
     filtered_labels= []
 
@@ -112,14 +110,11 @@ def filter(images,labels):
 
 if __name__ == "__main__":
 
-    # input_path_local = "/u1/rashid/FlowerCounter_Dataset_labels/1109-0710/part-00000"
-
-    input_path_local = "/home/rashid/Projects/FlowerCounter/label/part-00000"
+    input_path_local = "/u1/rashid/FlowerCounter_Dataset_labels/1109-0710/part-00000"
+    input_path_local_snd = "/u1/rashid/FlowerCounter_Dataset_labels/1109-0711/part-00000"
+    # input_path_local = "/home/rashid/Projects/FlowerCounter/label/part-00000"
     img,labels = process_label_files(input_path_local)
+    img_2,labels_2 = process_label_files(input_path_local_snd)
 
-    filtered_img,filtered_labels = filter(img,labels)
-    # stats.make_histogram(filtered_labels,3)
-    # print(len(filtered_img))
-
-    binned_labels_filtered = list(map(prepare.get_bin,filtered_labels))
-    print(filtered_img[155],binned_labels_filtered[155])
+    stats.make_histogram_twoset(labels,labels_2,200)
+    stats.make_cdf_twoset(labels, labels_2, 200)
