@@ -24,6 +24,7 @@ from io import StringIO, BytesIO
 from PIL import Image, ImageFile
 from skimage.feature import blob_doh
 from sklearn.cluster import KMeans as skKMeans
+from scipy.ndimage.filters import gaussian_filter
 
 
 class CanolaObject:
@@ -276,8 +277,10 @@ class CanolaTimelapseImage(CanolaObject):
         assert blobs is not None
         img = np.copy(self.readImage())
         for x, y, r in blobs:
-            cv2.circle(img, center=(int(y), int(x)), radius=int(r), color=(0, 255, 255), thickness=2)
-        cv2.imshow("{} {}".format(self.__plot, self.__timestamp), img)
+            cv2.circle(img, center=(int(y), int(x)), radius=0.1, color=(0,0,255), thickness=1)
+
+        cv2.imwrite("square_circle_opencv.jpg", img)
+        # cv2.imshow("{} {}".format(self.__plot, self.__timestamp), img)
         cv2.waitKey(0)
         cv2.destroyAllWindows()
 
@@ -888,6 +891,42 @@ def findImagesLocally(imagesBasePath):
 
     return imgs
 
+def genDensity(dot_im, sigmadots):
+    '''
+    @brief: This function gets a dotted image and returns its density map.
+    @param: dots: annotated dot image.
+    @param: sigmadots: density radius.
+    @return: density map for the input dots image.
+    '''
+
+    # Take only red channel
+    dot = dot_im
+    dot = gaussian_filter(dot, sigmadots)
+
+    return dot.astype(np.float32)
+
+def readImage(img):
+
+    ImageFile.LOAD_TRUNCATED_IMAGES = True
+    imgData = np.array(io.imread(BytesIO(img)))
+    return imgData
+
+def read_image_using_PIL(image):
+    ImageFile.LOAD_TRUNCATED_IMAGES = True
+    image = Image.open(image)
+    image = image.resize((227,227))
+    image = np.asarray(image, np.uint8)
+
+    '''
+    For Alexnet, we need to convert the RGB to BGR. Swapping the position of the slices can do the trick.
+    But for images if converted to numpy array, by default the writing permission is set to False.
+    So, we need to check the Flags at first to see whether changing the Writing permission is required or not.
+    This following step is only required for CNN where the inputs are expected to be in BGR mode. Otherwise, we can skip these steps.
+    '''
+    if(image.flags['WRITEABLE'] == False):
+        image.setflags(write=1)
+
+    return image[:,:,0]
 
 if __name__ == "__main__":
 
@@ -943,19 +982,47 @@ if __name__ == "__main__":
     # setManually = RegionManager()
     # setManually.definePlotMask(canolaTimelapseImages[0])
 
+    # print(len(canolaTimelapseImages))
+    # canolaTimelapseImages[0].showDetectedBlobs()
+    #
+    # img = read_image_using_PIL("./square_circle_opencv.jpg")
+
+    # dens_im = genDensity(img,0.5)
+
+    # image = Image.fromarray(img)
+    # io.imshow(np.asarray(image))
+    # io.show()
+    # cv2.imwrite("SubhanAllah.png",np.asarray(image))
+    # image.show()
+
+    blobs = canolaTimelapseImages[0].getFlowerCountObject().getBlobs()
+    print(len(blobs))
+
+    arr= np.zeros(shape=[224,224])
+    for y, x, r in blobs:
+        arr[y][x] = 255
+
+    dens_im = genDensity(arr,9)
+
+    io.imshow(dens_im)
+    io.show()
+
+
+
+
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
-
-    with open(output_dir + "flower_count_result.txt", 'w') as file_obj:
-
-        for i in canolaTimelapseImages:
-            img_path = i.getPath()
-            img_flower_count = len(i.getFlowerCountObject().getBlobs())
-
-            file_obj.write(str(img_path) + "\t\t" + str(img_flower_count) + "\n")
-
-    application_end_time = time() - application_start_time
-
-    print("----------------------------------------------")
-    print("SUCCESS: Images procesed in {} seconds".format(round(application_end_time, 3)))
-    print("----------------------------------------------")
+    #
+    # with open(output_dir + "flower_count_result.txt", 'w') as file_obj:
+    #
+    #     for i in canolaTimelapseImages:
+    #         img_path = i.getPath()
+    #         img_flower_count = len(i.getFlowerCountObject().getBlobs())
+    #
+    #         file_obj.write(str(img_path) + "\t\t" + str(img_flower_count) + "\n")
+    #
+    # application_end_time = time() - application_start_time
+    #
+    # print("----------------------------------------------")
+    # print("SUCCESS: Images procesed in {} seconds".format(round(application_end_time, 3)))
+    # print("----------------------------------------------")
