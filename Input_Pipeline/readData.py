@@ -2,7 +2,7 @@ import numpy as np
 from PIL import Image,ImageFile
 import tensorflow as tf
 import random
-# import Data_Visualization.statistical_summary as stats
+import Data_Visualization.statistical_summary as stats
 import math
 import prepare_dataset as prepare
 
