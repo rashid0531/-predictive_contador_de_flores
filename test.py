@@ -24,13 +24,15 @@
 # import os
 # import subprocess
 # import os.path
-# import numpy as np
-# import skimage.io as io
+import numpy as np
+import skimage.io as io
+import json
+
 # import const_variables_list as CONST
 # from time import time, sleep
-# from io import BytesIO
+from io import BytesIO
 # from pyspark import SparkContext
-# from PIL import Image,ImageFile
+from PIL import Image,ImageFile
 # import glob
 #
 # ImageFile.LOAD_TRUNCATED_IMAGES = True
@@ -136,3 +138,55 @@
 #     #         if (((line.strip().split(":")[0]).split("-")[0])) == '1108':
 #     #             co_ordinates_1108.append(line.strip())
 #
+
+def read_image_using_PIL(img):
+
+    ImageFile.LOAD_TRUNCATED_IMAGES = True
+    img = Image.open(img)
+    img = np.asarray(img, np.uint8)
+
+    # To check if the image load is successful.
+    # img = Image.fromarray(img, 'RGB')
+    # img.show()
+
+    return img
+
+label_file = "/u1/rashid/Sample_output/1109-0709/part-00000"
+input_prefix = "/u1/rashid/FlowerCounter_Dataset/"
+
+try:
+    with open(label_file, 'r') as file_obj:
+
+        file_contents = file_obj.readlines()
+        # Randomized lines inside file.
+        # random.shuffle(file_contents)
+        for each_line in file_contents:
+
+            each_line = each_line.strip()
+            image_path,coordinates = each_line.split(',',1)[0],each_line.split(',',1)[1]
+            # print(image_path)
+            # filtering '(' and ')' from each line.
+            image_path = image_path.replace('(', '')
+            image_path = image_path.replace("'", '')
+            image_path = input_prefix + ('/'.join(image_path.split('/')[-2:]))
+            # This line is to replace the last ' in the imagepath.
+            image_path = image_path.replace("'", '')
+            print(image_path)
+
+            print(coordinates[-1])
+            # coordinates = coordinates[-1].replace(")", '')
+            # lst = eval(coordinates)
+            # each_line = each_line.replace(')', '')
+            # image_path, label = each_line.split(',')
+
+            # The next two lines are subjected to be changed based on the location
+
+
+except FileNotFoundError:
+    msg = label_file + " does not exist."
+    print(msg)
+
+dens_im = read_image_using_PIL("/u1/rashid/Sample_Dataset/1109-0709/frame000270_1_3.jpg")
+io.imshow(dens_im)
+io.show()
+

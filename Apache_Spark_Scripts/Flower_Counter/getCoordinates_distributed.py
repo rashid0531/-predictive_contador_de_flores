@@ -137,7 +137,7 @@ def read_images(image_rawdata, corners):
 
 def get_coordinates_of_flowers(object):
 
-    return [(x,y,z) for x,y,z in object]
+    return [(y,x) for x,y,z in object]
 
 
 def run_fc_jobs_in_parallel(input_path,output_path,SparkContext):
@@ -177,11 +177,11 @@ if __name__ == "__main__":
     application_start_time = time()
 
 
-    # input_path = sys.argv[1]
-    # output_path = sys.argv[2]
-    # job_name = sys.argv[3]
-    input_path = "/data/mounted_hdfs_path/user/hduser/rashid/output/"
-    output_path = "/data/mounted_hdfs_path/user/hduser/rashid/output/"
+    input_path = sys.argv[1]
+    output_path = sys.argv[2]
+    job_name = sys.argv[3]
+    # input_path = "/data/mounted_hdfs_path/user/hduser/rashid/output/"
+    # output_path = "/data/mounted_hdfs_path/user/hduser/rashid/output/"
 
 
     #corners = [(10, 10), (1270, 10), (10, 710), (1270, 710)]
