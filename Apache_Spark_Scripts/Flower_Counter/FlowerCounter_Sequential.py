@@ -277,12 +277,26 @@ class CanolaTimelapseImage(CanolaObject):
         assert blobs is not None
         img = np.copy(self.readImage())
         for x, y, r in blobs:
-            cv2.circle(img, center=(int(y), int(x)), radius=0.1, color=(0,0,255), thickness=1)
+            cv2.circle(img, center=(int(y), int(x)), radius=1, color=(0,0,255), thickness=2)
 
-        cv2.imwrite("square_circle_opencv.jpg", img)
+        cv2.imwrite("annotated.jpg", img)
         # cv2.imshow("{} {}".format(self.__plot, self.__timestamp), img)
         cv2.waitKey(0)
         cv2.destroyAllWindows()
+
+    def saveDetectedBlobs(self, imagename):
+        blobs = self.__flowerCountObject.getBlobs()
+        assert blobs is not None
+        img = np.copy(self.readImage())
+        for x, y, r in blobs:
+            cv2.circle(img, center=(int(y), int(x)), radius=1, color=(0, 0, 255), thickness=2)
+
+        output_path = 'yo/'
+        if not os.path.exists(output_path):
+            os.makedirs(output_path)
+
+        im = Image.fromarray(img)
+        im.save(output_path+imagename)
 
     def getPlotMask(self):
         regionObject = self.getRegionObject()
@@ -868,7 +882,6 @@ class RegionManager:
         return imageArray
 
 
-
 def findImagesLocally(imagesBasePath):
 
     imgs = []
@@ -926,7 +939,7 @@ def read_image_using_PIL(image):
     if(image.flags['WRITEABLE'] == False):
         image.setflags(write=1)
 
-    return image[:,:,0]
+    return image
 
 if __name__ == "__main__":
 
@@ -983,9 +996,9 @@ if __name__ == "__main__":
     # setManually.definePlotMask(canolaTimelapseImages[0])
 
     # print(len(canolaTimelapseImages))
-    # canolaTimelapseImages[0].showDetectedBlobs()
-    #
-    # img = read_image_using_PIL("./square_circle_opencv.jpg")
+    # canolaTimelapseImages[0].saveDetectedBlobs("hello.jpg")
+
+    # img = read_image_using_PIL("./annotated.jpg")
 
     # dens_im = genDensity(img,0.5)
 
@@ -995,18 +1008,25 @@ if __name__ == "__main__":
     # cv2.imwrite("SubhanAllah.png",np.asarray(image))
     # image.show()
 
-    blobs = canolaTimelapseImages[0].getFlowerCountObject().getBlobs()
+    blobs = canolaTimelapseImages[4].getFlowerCountObject().getBlobs()
     print(len(blobs))
 
     arr= np.zeros(shape=[224,224])
     for y, x, r in blobs:
         arr[y][x] = 255
 
-    dens_im = genDensity(arr,9)
+    normalized = (arr - np.min(arr)) / (np.max(arr) - np.min(arr))
+    print(np.sum(normalized))
 
+    dens_im = genDensity(normalized,5)
+    # print(np.sum(dens_im))
+    # print(dens_im)
+    #
     io.imshow(dens_im)
     io.show()
 
+    # io.imshow(img)
+    # io.show()
 
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)

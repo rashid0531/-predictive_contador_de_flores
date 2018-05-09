@@ -266,6 +266,19 @@ class CanolaTimelapseImage(CanolaObject):
         cv2.waitKey( 0 )
         cv2.destroyAllWindows()
 
+    # Created By Rashid
+
+    def saveDetectedBlobs(self,imagename,output):
+        blobs = self.__flowerCountObject.getBlobs()
+        assert blobs is not None
+        img = np.copy( self.readImage() )
+        for x, y, r in blobs:
+            cv2.circle(img,center=(int(y), int(x)),radius=1,color=(0,0,255),thickness=2)
+        output_prefix = "annotated"+imagename.split("/")[-1]
+
+        print("_____out_____", output+output_prefix)
+        # cv2.imwrite(output+output_prefix,img)
+
     def getPlotMask(self):
         regionObject = self.getRegionObject()
         plotMask = regionObject.getPlotMask()
